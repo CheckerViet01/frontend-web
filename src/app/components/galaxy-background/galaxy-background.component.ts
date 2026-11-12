@@ -10,35 +10,65 @@ import {
 } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 
-interface TwinkleStar {
+interface VolumetricBeam {
+  originXFrac: number;
+  originYFrac: number;
+  angle: number;
+  lengthFrac: number;
+  baseWidth: number;
+  endWidth: number;
+  alpha: number;
+  phase: number;
+  speed: number;
+  swayAmp: number;
+  depth: number;
+  colorInner: string;
+  colorMid: string;
+}
+
+interface MicroStar {
   x: number;
   y: number;
   depth: number;
   radius: number;
-  baseAlpha: number;
-  twinkleSpeed: number;
+  maxAlpha: number;
+  fadeSpeed: number;
   phase: number;
   vx: number;
   vy: number;
   color: string;
 }
 
-interface SparkleStar {
+interface TinyGlint {
   x: number;
   y: number;
   depth: number;
-  size: number;
+  armLength: number;
   phase: number;
   speed: number;
   vx: number;
   vy: number;
   angle: number;
-  rotSpeed: number;
-  coreColor: string;
-  glowColor: string;
+  color: string;
 }
 
-interface NebulaMote {
+interface CosmicDew {
+  x: number;
+  y: number;
+  depth: number;
+  radius: number;
+  tailLength: number;
+  vx: number;
+  vy: number;
+  swayAmp: number;
+  swayFreq: number;
+  phase: number;
+  fadeSpeed: number;
+  maxAlpha: number;
+  color: string;
+}
+
+interface HorizonEmber {
   x: number;
   y: number;
   depth: number;
@@ -51,12 +81,25 @@ interface NebulaMote {
   color: string;
 }
 
-interface ShootingStar {
+interface WaterSpecularStreak {
+  xFrac: number;
+  yFrac: number;
+  width: number;
+  thickness: number;
+  phase: number;
+  speed: number;
+  driftAmp: number;
+  alpha: number;
+  color: string;
+}
+
+interface AnimeMeteor {
   x: number;
   y: number;
   vx: number;
   vy: number;
   length: number;
+  width: number;
   life: number;
   maxLife: number;
   color: string;
@@ -68,95 +111,49 @@ interface ShootingStar {
   imports: [CommonModule],
   template: `
     <div class="galaxy-backdrop" aria-hidden="true">
-      <!-- Layer 1: Deep Indigo-Violet Cosmic Zenith Sky -->
-      <div class="cosmic-sky-base"></div>
-
-      <!-- Layer 2: Sweeping Rotating Milky Way Diagonal Nebula Ribbon -->
-      <div class="galaxy-ribbon-wrap">
-        <div class="galaxy-ribbon-core"></div>
+      <!-- Layer 1: Full-Bleed Animated Twilight Sky & Sunset Extension -->
+      <div class="ambient-wings-wrap" [style.transform]="parallaxStyle(0.30)">
+        <img
+          src="/assets/galaxy-bg.jpg"
+          alt=""
+          class="bg-wings-img"
+          decoding="async"
+        />
       </div>
 
-      <!-- Layer 3: Sculpted Billowing Cosmic Nebula Clouds (Inspired by Uploaded Galaxy) -->
-      <div class="nebula-stage">
-        <!-- Back Deep Cloud Bank (Violet Left + Royal Blue Right) -->
-        <svg class="nebula-svg nebula-back" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="leftVioletDeep" x1="0%" y1="100%" x2="72%" y2="28%">
-              <stop offset="0%" stop-color="#c084fc" stop-opacity="0.92" />
-              <stop offset="32%" stop-color="#a855f7" stop-opacity="0.80" />
-              <stop offset="68%" stop-color="#6d28d9" stop-opacity="0.52" />
-              <stop offset="100%" stop-color="#312e81" stop-opacity="0" />
-            </linearGradient>
-            <linearGradient id="rightBlueDeep" x1="100%" y1="100%" x2="34%" y2="18%">
-              <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.90" />
-              <stop offset="38%" stop-color="#3b82f6" stop-opacity="0.72" />
-              <stop offset="72%" stop-color="#1d4ed8" stop-opacity="0.45" />
-              <stop offset="100%" stop-color="#1e1b4b" stop-opacity="0" />
-            </linearGradient>
-            <filter id="nebulaSoftBlur" x="-15%" y="-15%" width="130%" height="130%">
-              <feGaussianBlur stdDeviation="22" />
-            </filter>
-          </defs>
-
-          <path
-            filter="url(#nebulaSoftBlur)"
-            fill="url(#leftVioletDeep)"
-            d="M-120,940 L-120,210 C-20,175 70,220 128,288 C195,248 272,272 320,342 C382,315 460,345 505,418 C578,395 655,428 708,495 C776,472 868,512 918,595 C965,578 1045,620 1095,705 L1180,940 Z"
+      <!-- Layer 2: Crisp Feathered Artwork Stage + Sky-Only Moving Cloud Mist Veil -->
+      <div class="artwork-stage" [style.transform]="parallaxStyle(0.66)">
+        <div class="artwork-kenburns-wrap">
+          <img
+            src="/assets/galaxy-bg.jpg"
+            alt=""
+            class="bg-artwork-img"
+            decoding="async"
           />
-
-          <path
-            filter="url(#nebulaSoftBlur)"
-            fill="url(#rightBlueDeep)"
-            d="M1720,940 L1720,55 C1610,75 1535,148 1482,228 C1412,218 1345,265 1300,338 C1225,332 1148,382 1102,452 C1020,445 935,498 885,578 C812,568 730,618 665,708 L520,940 Z"
+          <img
+            src="/assets/galaxy-bg.jpg"
+            alt=""
+            class="bg-sky-cloud-veil"
+            decoding="async"
           />
-        </svg>
-
-        <!-- Mid Billowing Clouds: Magenta/Orchid Ridge + Electric Cyan Ridge -->
-        <svg class="nebula-svg nebula-mid" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <linearGradient id="leftOrchidMid" x1="5%" y1="95%" x2="65%" y2="42%">
-              <stop offset="0%" stop-color="#f5d0fe" stop-opacity="0.88" />
-              <stop offset="28%" stop-color="#e879f9" stop-opacity="0.78" />
-              <stop offset="62%" stop-color="#9333ea" stop-opacity="0.46" />
-              <stop offset="100%" stop-color="#4c1d95" stop-opacity="0" />
-            </linearGradient>
-            <linearGradient id="rightCyanMid" x1="95%" y1="90%" x2="40%" y2="28%">
-              <stop offset="0%" stop-color="#a5f3fc" stop-opacity="0.85" />
-              <stop offset="30%" stop-color="#38bdf8" stop-opacity="0.72" />
-              <stop offset="65%" stop-color="#2563eb" stop-opacity="0.44" />
-              <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0" />
-            </linearGradient>
-            <filter id="nebulaMidBlur" x="-15%" y="-15%" width="130%" height="130%">
-              <feGaussianBlur stdDeviation="16" />
-            </filter>
-          </defs>
-
-          <path
-            filter="url(#nebulaMidBlur)"
-            fill="url(#leftOrchidMid)"
-            d="M-100,950 L-100,420 C-15,388 78,415 142,475 C210,432 308,452 365,522 C432,488 525,515 578,582 C645,555 740,595 795,672 C855,650 938,695 992,785 L1080,950 Z"
-          />
-
-          <path
-            filter="url(#nebulaMidBlur)"
-            fill="url(#rightCyanMid)"
-            d="M1700,950 L1700,195 C1605,212 1525,282 1468,365 C1395,355 1315,412 1265,488 C1185,482 1105,535 1048,615 C972,608 885,665 825,755 L695,950 Z"
-          />
-        </svg>
-
-        <!-- Foreground Luminous Cloud Crests + Drifting Nebula Wisps + Supernova Valley Rift -->
-        <div class="nebula-crest-glow crest-left-pink"></div>
-        <div class="nebula-crest-glow crest-right-cyan"></div>
-        <div class="nebula-wisp wisp-violet"></div>
-        <div class="nebula-wisp wisp-cyan"></div>
-        <div class="nebula-rift-core"></div>
-        <div class="nebula-rift-aurora"></div>
+        </div>
       </div>
 
-      <!-- Layer 4: Subtle Cosmic Contrast Veil (Preserves crisp text contrast while keeping vibrant galaxy) -->
+      <!-- Layer 3: HDRP Volumetric Light Shafts, Milky Way Canyon Glow & Horizon Water Shimmer -->
+      <div class="hdrp-atmosphere-layer">
+        <div class="hdrp-godray hdrp-godray-cyan"></div>
+        <div class="hdrp-godray hdrp-godray-violet"></div>
+        <div class="milkyway-core-glow"></div>
+        <div class="cloud-drift cloud-drift-violet"></div>
+        <div class="cloud-drift cloud-drift-cyan"></div>
+        <div class="horizon-sunset-pulse"></div>
+        <div class="water-shimmer-band"></div>
+      </div>
+
+      <!-- Layer 4: Balanced Contrast Vignette Over Artwork Only (Protects Foreground UI Readability) -->
       <div class="readability-scrim"></div>
 
-      <!-- Layer 5: 60FPS Sparkling Stars, 4-Point Diamond Flares, Bokeh Motes & Meteors -->
+      <!-- Layer 5: 60FPS HiDPI Shooting Stars, Cosmic Dew, Micro-Stars, Horizon Embers & Water Glints -->
       <canvas #galaxyCanvas class="galaxy-canvas"></canvas>
     </div>
   `,
@@ -168,6 +165,7 @@ interface ShootingStar {
       z-index: 0;
       pointer-events: none;
       overflow: hidden;
+      view-transition-name: galaxy-sky;
     }
 
     .galaxy-backdrop {
@@ -175,231 +173,323 @@ interface ShootingStar {
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background-color: #070822;
+      background: linear-gradient(180deg, #090b28 0%, #151446 56%, #1c1238 100%);
     }
 
-    /* Deep Twilight Indigo-Violet Zenith */
-    .cosmic-sky-base {
+    /* Layer 1: Full-Bleed Animated Wings */
+    .ambient-wings-wrap {
+      position: absolute;
+      inset: -7%;
+      will-change: transform;
+      transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .bg-wings-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+      filter: blur(26px) saturate(1.22) contrast(1.05) brightness(0.76);
+      animation: wingsFlowMotion 20s ease-in-out infinite alternate;
+      will-change: transform;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    @keyframes wingsFlowMotion {
+      0% { transform: scale(1.12) translate3d(-1.5%, 1%, 0); }
+      100% { transform: scale(1.18) translate3d(1.5%, -1.2%, 0); }
+    }
+
+    /* Layer 2: Feathered Primary Artwork Stage + Sky-Only Moving Veil */
+    .artwork-stage {
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(ellipse 85% 60% at 52% 18%, rgba(49, 46, 129, 0.72) 0%, rgba(23, 25, 86, 0.55) 48%, rgba(7, 8, 34, 0.92) 100%),
-        linear-gradient(155deg, #090a2a 0%, #161858 46%, #131c58 76%, #0b113c 100%);
-    }
-
-    /* Subtle Diagonal Swirling Galaxy Ribbon */
-    .galaxy-ribbon-wrap {
-      position: absolute;
-      inset: -25%;
-      pointer-events: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      animation: ribbonDrift 38s ease-in-out infinite alternate;
-      will-change: transform, opacity;
+      will-change: transform;
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .galaxy-ribbon-core {
-      width: 145%;
-      height: 58%;
-      transform: rotate(-22deg);
-      background:
-        radial-gradient(ellipse 65% 45% at 50% 50%, rgba(125, 211, 252, 0.16) 0%, rgba(192, 132, 252, 0.14) 38%, rgba(99, 102, 241, 0.08) 65%, transparent 85%);
-      filter: blur(42px);
+    .artwork-kenburns-wrap {
+      position: relative;
+      width: min(100vw, 1220px);
+      height: 100%;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(0, 0, 0, 0.62) 10%,
+        #000000 22%,
+        #000000 78%,
+        rgba(0, 0, 0, 0.62) 90%,
+        transparent 100%
+      );
+      mask-image: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(0, 0, 0, 0.62) 10%,
+        #000000 22%,
+        #000000 78%,
+        rgba(0, 0, 0, 0.62) 90%,
+        transparent 100%
+      );
+    }
+
+    .bg-artwork-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 62%;
+      animation: cosmicKenBurns 19s ease-in-out infinite alternate;
+      will-change: transform, filter;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* Masked Sky-Only Translucent Milky Way Veil (Swirls Clouds Above Without Doubling Silhouette Figure) */
+    .bg-sky-cloud-veil {
+      position: absolute;
+      inset: -5%;
+      width: 110%;
+      height: 110%;
+      object-fit: cover;
+      object-position: center 36%;
       mix-blend-mode: screen;
+      opacity: 0.30;
+      filter: blur(14px) saturate(1.28);
+      -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.92) 0%, #000000 50%, transparent 72%);
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.92) 0%, #000000 50%, transparent 72%);
+      animation: skyVeilDrift 15s ease-in-out infinite alternate;
+      will-change: transform, opacity;
+      user-select: none;
+      pointer-events: none;
     }
 
-    @keyframes ribbonDrift {
-      0% { transform: translate3d(-2%, 1%, 0) scale(1) rotate(0deg); opacity: 0.78; }
-      50% { transform: translate3d(1.5%, -1.5%, 0) scale(1.04) rotate(1.5deg); opacity: 0.95; }
-      100% { transform: translate3d(2.5%, 1.5%, 0) scale(1.01) rotate(-1deg); opacity: 0.82; }
+    @keyframes cosmicKenBurns {
+      0% {
+        transform: scale(1.03) translate3d(-0.9%, 0.7%, 0);
+        filter: blur(0.45px) saturate(1.12) contrast(1.06) brightness(0.84);
+      }
+      50% {
+        transform: scale(1.085) translate3d(0.8%, -1.0%, 0);
+        filter: blur(0.35px) saturate(1.18) contrast(1.08) brightness(0.91);
+      }
+      100% {
+        transform: scale(1.05) translate3d(-0.4%, -0.3%, 0);
+        filter: blur(0.45px) saturate(1.14) contrast(1.07) brightness(0.87);
+      }
     }
 
-    /* Nebula Clouds Container */
-    .nebula-stage {
+    @keyframes skyVeilDrift {
+      0% {
+        transform: scale(1.06) translate3d(2.8%, -1.8%, 0) rotate(1.4deg);
+        opacity: 0.22;
+      }
+      50% {
+        transform: scale(1.13) translate3d(-2.4%, 1.4%, 0) rotate(-1.2deg);
+        opacity: 0.38;
+      }
+      100% {
+        transform: scale(1.09) translate3d(1.6%, 1.8%, 0) rotate(0.8deg);
+        opacity: 0.26;
+      }
+    }
+
+    /* Layer 3: HDRP Volumetric Atmosphere & Horizon Mirror Water Glow */
+    .hdrp-atmosphere-layer {
       position: absolute;
       inset: 0;
       overflow: hidden;
+      pointer-events: none;
     }
 
-    .nebula-svg {
+    .hdrp-godray {
       position: absolute;
-      inset: -6%;
-      width: 112%;
-      height: 112%;
-      will-change: transform, opacity;
-    }
-
-    .nebula-back {
-      opacity: 0.78;
-      animation: cloudSwellSlow 32s ease-in-out infinite alternate;
-    }
-
-    .nebula-mid {
-      opacity: 0.72;
-      mix-blend-mode: screen;
-      animation: cloudSwellReverse 25s ease-in-out infinite alternate;
-    }
-
-    @keyframes cloudSwellSlow {
-      0% { transform: translate3d(-1.4%, 1%, 0) scale(1.01); }
-      50% { transform: translate3d(0.8%, -0.8%, 0) scale(1.035); }
-      100% { transform: translate3d(1.8%, 0.6%, 0) scale(1.02); }
-    }
-
-    @keyframes cloudSwellReverse {
-      0% { transform: translate3d(1.5%, -0.6%, 0) scale(1.03); opacity: 0.66; }
-      50% { transform: translate3d(-0.6%, 1.2%, 0) scale(1); opacity: 0.82; }
-      100% { transform: translate3d(-1.6%, -0.4%, 0) scale(1.04); opacity: 0.70; }
-    }
-
-    /* Soft Billowing Rim Halos & Valley Rift Glow */
-    .nebula-crest-glow {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(78px);
+      top: -20%;
+      height: 138%;
+      pointer-events: none;
+      filter: blur(46px);
       mix-blend-mode: screen;
       will-change: transform, opacity;
     }
 
-    .crest-left-pink {
-      width: 58vw;
-      height: 52vh;
-      min-width: 420px;
-      min-height: 360px;
-      left: -10vw;
-      bottom: -14vh;
-      background: radial-gradient(circle at 42% 58%, rgba(240, 171, 252, 0.45) 0%, rgba(192, 132, 252, 0.34) 42%, rgba(147, 51, 234, 0.14) 70%, transparent 100%);
-      animation: leftCrestPulse 20s ease-in-out infinite alternate;
+    .hdrp-godray-cyan {
+      left: 16%;
+      width: 24vw;
+      transform: rotate(-16deg);
+      background: linear-gradient(
+        180deg,
+        rgba(125, 211, 252, 0.18) 0%,
+        rgba(56, 189, 248, 0.09) 46%,
+        transparent 88%
+      );
+      animation: godRaySweepA 12s ease-in-out infinite alternate;
     }
 
-    .crest-right-cyan {
-      width: 58vw;
-      height: 56vh;
-      min-width: 420px;
-      min-height: 380px;
-      right: -10vw;
-      bottom: -12vh;
-      background: radial-gradient(circle at 58% 48%, rgba(165, 243, 252, 0.42) 0%, rgba(56, 189, 248, 0.34) 40%, rgba(37, 99, 235, 0.16) 72%, transparent 100%);
-      animation: rightCrestPulse 22s ease-in-out infinite alternate;
+    .hdrp-godray-violet {
+      right: 14%;
+      width: 22vw;
+      transform: rotate(15deg);
+      background: linear-gradient(
+        180deg,
+        rgba(192, 132, 252, 0.16) 0%,
+        rgba(129, 140, 248, 0.08) 48%,
+        transparent 88%
+      );
+      animation: godRaySweepB 14s ease-in-out infinite alternate;
     }
 
-    @keyframes leftCrestPulse {
-      0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.72; }
-      100% { transform: translate3d(3vw, -2vh, 0) scale(1.08); opacity: 0.92; }
+    @keyframes godRaySweepA {
+      0% { transform: rotate(-18deg) translateX(-3vw); opacity: 0.48; }
+      100% { transform: rotate(-12deg) translateX(4vw); opacity: 0.86; }
     }
 
-    @keyframes rightCrestPulse {
-      0% { transform: translate3d(0, 0, 0) scale(1.04); opacity: 0.75; }
-      100% { transform: translate3d(-2.5vw, -2.5vh, 0) scale(0.98); opacity: 0.94; }
+    @keyframes godRaySweepB {
+      0% { transform: rotate(17deg) translateX(3vw); opacity: 0.44; }
+      100% { transform: rotate(11deg) translateX(-4vw); opacity: 0.82; }
     }
 
-    /* Supernova Core at Cloud Valley */
-    .nebula-rift-core {
+    .milkyway-core-glow {
       position: absolute;
-      left: 58%;
-      top: 56%;
+      left: 50%;
+      top: 38%;
       width: 44vw;
-      height: 38vh;
-      min-width: 340px;
-      min-height: 260px;
-      transform: translate(-50%, -50%);
+      height: 60vh;
+      transform: translate(-50%, -50%) rotate(-12deg);
       background: radial-gradient(
         ellipse at center,
-        rgba(224, 242, 254, 0.48) 0%,
-        rgba(103, 232, 249, 0.34) 24%,
-        rgba(167, 139, 250, 0.22) 52%,
-        transparent 78%
+        rgba(125, 211, 252, 0.22) 0%,
+        rgba(167, 139, 250, 0.16) 40%,
+        rgba(232, 121, 249, 0.09) 66%,
+        transparent 86%
       );
-      filter: blur(48px);
+      filter: blur(46px);
       mix-blend-mode: screen;
-      animation: coreBreathe 14s ease-in-out infinite alternate;
+      animation: corePulseBreath 9s ease-in-out infinite alternate;
       will-change: transform, opacity;
     }
 
-    .nebula-rift-aurora {
-      position: absolute;
-      left: 44%;
-      top: 46%;
-      width: 66vw;
-      height: 46vh;
-      transform: translate(-50%, -50%) rotate(-18deg);
-      background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(217, 70, 239, 0.16) 25%,
-        rgba(125, 211, 252, 0.22) 55%,
-        rgba(59, 130, 246, 0.16) 80%,
-        transparent 100%
-      );
-      filter: blur(55px);
-      mix-blend-mode: screen;
-      animation: auroraSweep 28s ease-in-out infinite alternate;
-      will-change: transform, opacity;
+    @keyframes corePulseBreath {
+      0% { transform: translate(-50%, -50%) rotate(-12deg) scale(0.94); opacity: 0.48; }
+      100% { transform: translate(-48%, -52%) rotate(-9deg) scale(1.10); opacity: 0.88; }
     }
 
-    @keyframes coreBreathe {
-      0% { transform: translate(-50%, -50%) scale(0.92); opacity: 0.65; }
-      50% { transform: translate(-48%, -52%) scale(1.08); opacity: 0.95; }
-      100% { transform: translate(-51%, -49%) scale(0.98); opacity: 0.78; }
-    }
-
-    @keyframes auroraSweep {
-      0% { transform: translate(-52%, -48%) rotate(-18deg) scaleX(0.96); opacity: 0.58; }
-      100% { transform: translate(-46%, -52%) rotate(-14deg) scaleX(1.06); opacity: 0.85; }
-    }
-
-    /* Gliding Nebula Mist Wisps for Perceptible Cloud Motion */
-    .nebula-wisp {
+    .cloud-drift {
       position: absolute;
       border-radius: 50%;
-      filter: blur(52px);
+      filter: blur(56px);
       mix-blend-mode: screen;
       will-change: transform, opacity;
     }
 
-    .wisp-violet {
-      width: 46vw;
-      height: 26vh;
-      left: 6%;
-      bottom: 8%;
-      background: radial-gradient(ellipse at center, rgba(244, 114, 182, 0.36) 0%, rgba(192, 132, 252, 0.24) 48%, transparent 80%);
-      transform: rotate(-16deg);
-      animation: wispFloatViolet 17s ease-in-out infinite alternate;
-    }
-
-    .wisp-cyan {
-      width: 48vw;
+    .cloud-drift-violet {
+      width: 58vw;
       height: 28vh;
-      right: 4%;
-      top: 28%;
-      background: radial-gradient(ellipse at center, rgba(125, 211, 252, 0.34) 0%, rgba(56, 189, 248, 0.22) 48%, transparent 80%);
-      transform: rotate(-20deg);
-      animation: wispFloatCyan 19s ease-in-out infinite alternate;
+      left: -8vw;
+      top: 42%;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(192, 132, 252, 0.20) 0%,
+        rgba(244, 114, 182, 0.12) 48%,
+        transparent 80%
+      );
+      animation: cloudDriftRight 14s ease-in-out infinite alternate;
     }
 
-    @keyframes wispFloatViolet {
-      0% { transform: translate3d(-4vw, 2vh, 0) rotate(-16deg) scale(0.96); opacity: 0.65; }
-      100% { transform: translate3d(5vw, -3vh, 0) rotate(-11deg) scale(1.08); opacity: 0.92; }
+    .cloud-drift-cyan {
+      width: 54vw;
+      height: 28vh;
+      right: -8vw;
+      top: 22%;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(56, 189, 248, 0.18) 0%,
+        rgba(129, 140, 248, 0.14) 50%,
+        transparent 82%
+      );
+      animation: cloudDriftLeft 16s ease-in-out infinite alternate;
     }
 
-    @keyframes wispFloatCyan {
-      0% { transform: translate3d(4vw, -2vh, 0) rotate(-20deg) scale(1.04); opacity: 0.65; }
-      100% { transform: translate3d(-5vw, 3vh, 0) rotate(-15deg) scale(0.96); opacity: 0.92; }
+    @keyframes cloudDriftRight {
+      0% { transform: translate3d(-5vw, 0, 0) scale(0.95); opacity: 0.48; }
+      100% { transform: translate3d(7vw, -2vh, 0) scale(1.07); opacity: 0.84; }
     }
 
-    /* Gentle Balanced Scrim so Luminous Galaxy Clouds Stay Vivid & UI Stays Readable */
+    @keyframes cloudDriftLeft {
+      0% { transform: translate3d(5vw, 1.5vh, 0) scale(1.05); opacity: 0.46; }
+      100% { transform: translate3d(-6vw, -2vh, 0) scale(0.94); opacity: 0.82; }
+    }
+
+    .horizon-sunset-pulse {
+      position: absolute;
+      left: 50%;
+      bottom: -6vh;
+      width: 84vw;
+      height: 26vh;
+      transform: translateX(-50%);
+      background: radial-gradient(
+        ellipse at center bottom,
+        rgba(253, 186, 116, 0.22) 0%,
+        rgba(251, 113, 133, 0.16) 44%,
+        rgba(168, 85, 247, 0.07) 72%,
+        transparent 92%
+      );
+      filter: blur(40px);
+      mix-blend-mode: screen;
+      animation: horizonGlowWave 10s ease-in-out infinite alternate;
+    }
+
+    .water-shimmer-band {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 13vh;
+      background: linear-gradient(
+        90deg,
+        transparent 10%,
+        rgba(253, 224, 71, 0.05) 36%,
+        rgba(251, 146, 60, 0.10) 50%,
+        rgba(244, 114, 182, 0.06) 66%,
+        transparent 90%
+      );
+      filter: blur(14px);
+      mix-blend-mode: screen;
+      animation: waterRippleDrift 7s ease-in-out infinite alternate;
+    }
+
+    @keyframes horizonGlowWave {
+      0% { opacity: 0.54; transform: translateX(-50%) scaleX(0.95); }
+      100% { opacity: 0.90; transform: translateX(-50%) scaleX(1.06); }
+    }
+
+    @keyframes waterRippleDrift {
+      0% { opacity: 0.42; transform: translateX(-2.5%) scaleY(0.94); }
+      100% { opacity: 0.82; transform: translateX(2.5%) scaleY(1.06); }
+    }
+
+    /* Layer 4: Contrast Readability Vignette Over Artwork Layer Only */
     .readability-scrim {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(6, 7, 26, 0.26) 0%,
-        rgba(6, 8, 28, 0.12) 52%,
-        rgba(6, 8, 28, 0.22) 100%
-      );
+      background:
+        radial-gradient(
+          ellipse 66% 64% at 50% 42%,
+          rgba(5, 7, 22, 0.46) 0%,
+          rgba(6, 7, 24, 0.34) 62%,
+          rgba(4, 5, 18, 0.54) 100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(5, 6, 20, 0.44) 0%,
+          rgba(6, 7, 24, 0.28) 54%,
+          rgba(8, 6, 20, 0.38) 100%
+        );
     }
 
+    /* Layer 5: 60FPS HiDPI Animated Sky VFX Canvas */
     .galaxy-canvas {
       position: absolute;
       inset: 0;
@@ -408,15 +498,23 @@ interface ShootingStar {
       display: block;
     }
 
+    @media (max-width: 768px) {
+      .artwork-kenburns-wrap {
+        width: 100vw;
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
-      .galaxy-ribbon-wrap,
-      .nebula-back,
-      .nebula-mid,
-      .crest-left-pink,
-      .crest-right-cyan,
-      .nebula-wisp,
-      .nebula-rift-core,
-      .nebula-rift-aurora {
+      .bg-wings-img,
+      .bg-artwork-img,
+      .bg-sky-cloud-veil,
+      .hdrp-godray,
+      .milkyway-core-glow,
+      .cloud-drift,
+      .horizon-sunset-pulse,
+      .water-shimmer-band {
         animation: none !important;
       }
     }
@@ -437,10 +535,13 @@ export class GalaxyBackgroundComponent implements AfterViewInit, OnDestroy {
   private dpr = 1;
   private reduceMotion = false;
 
-  private stars: TwinkleStar[] = [];
-  private sparkles: SparkleStar[] = [];
-  private motes: NebulaMote[] = [];
-  private meteors: ShootingStar[] = [];
+  private beams: VolumetricBeam[] = [];
+  private microStars: MicroStar[] = [];
+  private tinyGlints: TinyGlint[] = [];
+  private cosmicDew: CosmicDew[] = [];
+  private embers: HorizonEmber[] = [];
+  private waterStreaks: WaterSpecularStreak[] = [];
+  private meteors: AnimeMeteor[] = [];
 
   private mouseTargetX = 0;
   private mouseTargetY = 0;
@@ -449,13 +550,17 @@ export class GalaxyBackgroundComponent implements AfterViewInit, OnDestroy {
 
   private lastTime = 0;
   private elapsedTime = 0;
-  private nextMeteorDelay = 2.6;
+  private nextMeteorDelay = 1.0;
 
   constructor(
     @Inject(PLATFORM_ID) platformId: Object,
     private ngZone: NgZone
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
+  }
+
+  parallaxStyle(depth: number): string {
+    return `translate3d(${(-this.parallaxX * depth).toFixed(2)}px, ${(-this.parallaxY * depth).toFixed(2)}px, 0)`;
   }
 
   ngAfterViewInit(): void {
@@ -467,11 +572,15 @@ export class GalaxyBackgroundComponent implements AfterViewInit, OnDestroy {
 
     this.ngZone.runOutsideAngular(() => {
       this.setupCanvas();
-      this.seedGalaxyField();
+      this.seedGalaxyVfx();
+
+      if (!this.reduceMotion) {
+        this.spawnMeteor(true);
+      }
 
       this.resizeHandler = () => {
         this.setupCanvas();
-        this.seedGalaxyField();
+        this.seedGalaxyVfx();
       };
       window.addEventListener('resize', this.resizeHandler, { passive: true });
 
@@ -504,15 +613,9 @@ export class GalaxyBackgroundComponent implements AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     if (!this.isBrowser) return;
     this.stopLoop();
-    if (this.resizeHandler) {
-      window.removeEventListener('resize', this.resizeHandler);
-    }
-    if (this.mouseHandler) {
-      window.removeEventListener('mousemove', this.mouseHandler);
-    }
-    if (this.visibilityHandler) {
-      document.removeEventListener('visibilitychange', this.visibilityHandler);
-    }
+    if (this.resizeHandler) window.removeEventListener('resize', this.resizeHandler);
+    if (this.mouseHandler) window.removeEventListener('mousemove', this.mouseHandler);
+    if (this.visibilityHandler) document.removeEventListener('visibilitychange', this.visibilityHandler);
   }
 
   private setupCanvas(): void {
@@ -524,97 +627,201 @@ export class GalaxyBackgroundComponent implements AfterViewInit, OnDestroy {
     canvas.height = Math.floor(this.height * this.dpr);
   }
 
-  private seedGalaxyField(): void {
+  private seedGalaxyVfx(): void {
     const area = this.width * this.height;
-    const starCount = Math.min(380, Math.max(180, Math.floor(area / 5400)));
-    const sparkleCount = Math.min(34, Math.max(16, Math.floor(area / 62000)));
-    const moteCount = Math.min(52, Math.max(24, Math.floor(area / 40000)));
+    const starCount = Math.min(200, Math.max(100, Math.floor(area / 9200)));
+    const glintCount = Math.min(18, Math.max(8, Math.floor(area / 105000)));
+    const dewCount = Math.min(64, Math.max(32, Math.floor(area / 28000)));
+    const emberCount = Math.min(44, Math.max(20, Math.floor(area / 45000)));
+    const streakCount = Math.min(22, Math.max(12, Math.floor(this.width / 85)));
 
-    const starColors = [
-      '#ffffff',
-      '#ffffff',
-      '#e0f2fe',
-      '#bae6fd',
-      '#f5d0fe',
-      '#e9d5ff',
-      '#fef9c3',
+    // 1. Directional Volumetric Milky Way & Sunset Scattering Shafts
+    this.beams = [
+      {
+        originXFrac: 0.42,
+        originYFrac: -0.08,
+        angle: Math.PI * 0.58,
+        lengthFrac: 0.9,
+        baseWidth: 70,
+        endWidth: 280,
+        alpha: 0.036,
+        phase: 0.2,
+        speed: 0.26,
+        swayAmp: 0.038,
+        depth: 0.45,
+        colorInner: 'rgba(125, 211, 252, 1)',
+        colorMid: 'rgba(167, 139, 250, 0.52)',
+      },
+      {
+        originXFrac: 0.56,
+        originYFrac: -0.06,
+        angle: Math.PI * 0.44,
+        lengthFrac: 0.86,
+        baseWidth: 65,
+        endWidth: 260,
+        alpha: 0.032,
+        phase: 1.9,
+        speed: 0.22,
+        swayAmp: 0.032,
+        depth: 0.55,
+        colorInner: 'rgba(192, 132, 252, 1)',
+        colorMid: 'rgba(56, 189, 248, 0.48)',
+      },
+      {
+        originXFrac: 0.5,
+        originYFrac: 0.9,
+        angle: -Math.PI * 0.62,
+        lengthFrac: 0.44,
+        baseWidth: 85,
+        endWidth: 300,
+        alpha: 0.034,
+        phase: 0.8,
+        speed: 0.24,
+        swayAmp: 0.034,
+        depth: 0.65,
+        colorInner: 'rgba(253, 186, 116, 1)',
+        colorMid: 'rgba(251, 113, 133, 0.45)',
+      },
     ];
 
-    this.stars = Array.from({ length: starCount }, () => {
+    // 2. Refined Small Fading Milky Way Stars (0.38px - 0.95px — Crisp, Delicate, Never Overwhelming)
+    const starPalette = ['#ffffff', '#e0f2fe', '#7dd3fc', '#f5d0fe', '#fde68a', '#fed7aa'];
+    this.microStars = Array.from({ length: starCount }, () => {
       const depth = 0.25 + Math.random() * 0.75;
-      // Bias slightly denser starfield in upper sky & diagonal galaxy band like the photo
-      const yBias = Math.random() < 0.72 ? Math.random() * 0.78 : Math.random();
-      return {
-        x: Math.random() * this.width,
-        y: yBias * this.height,
-        depth,
-        radius: 0.55 + Math.random() * 1.45 * depth,
-        baseAlpha: 0.32 + Math.random() * 0.68,
-        twinkleSpeed: 0.9 + Math.random() * 2.4,
-        phase: Math.random() * Math.PI * 2,
-        vx: (0.8 + Math.random() * 1.6) * depth * (Math.random() < 0.5 ? 1 : 0.4),
-        vy: (-0.5 - Math.random() * 1.2) * depth,
-        color: starColors[Math.floor(Math.random() * starColors.length)],
-      };
-    });
-
-    const sparklePalettes = [
-      { core: '#ffffff', glow: 'rgba(125, 211, 252, 0.85)' },
-      { core: '#ffffff', glow: 'rgba(240, 171, 252, 0.85)' },
-      { core: '#f0f9ff', glow: 'rgba(56, 189, 248, 0.9)' },
-      { core: '#fdf4ff', glow: 'rgba(192, 132, 252, 0.85)' },
-    ];
-
-    this.sparkles = Array.from({ length: sparkleCount }, (_, idx) => {
-      const palette = sparklePalettes[idx % sparklePalettes.length];
-      // Place 2-3 focal bright sparkles near the center rift valley just like the image
-      const isRiftBeacon = idx < 3;
-      const x = isRiftBeacon
-        ? this.width * (0.46 + Math.random() * 0.16)
+      const inChannel = Math.random() < 0.6;
+      const x = inChannel
+        ? this.width * (0.22 + (Math.random() + Math.random()) * 0.28)
         : Math.random() * this.width;
-      const y = isRiftBeacon
-        ? this.height * (0.34 + Math.random() * 0.24)
-        : (0.06 + Math.random() * 0.84) * this.height;
-      const depth = isRiftBeacon ? 0.95 : 0.45 + Math.random() * 0.55;
+      const y = Math.random() * this.height * 0.86;
 
       return {
         x,
         y,
         depth,
-        size: isRiftBeacon ? 10 + Math.random() * 6 : 5.5 + Math.random() * 7.5,
+        radius: 0.38 + Math.random() * 0.55 * depth,
+        maxAlpha: 0.36 + Math.random() * 0.44,
+        fadeSpeed: 0.75 + Math.random() * 1.1,
         phase: Math.random() * Math.PI * 2,
-        speed: 1.1 + Math.random() * 1.8,
-        vx: (0.6 + Math.random() * 1.2) * depth,
-        vy: (-0.4 - Math.random() * 0.9) * depth,
-        angle: (Math.random() - 0.5) * 0.25,
-        rotSpeed: (Math.random() - 0.5) * 0.08,
-        coreColor: palette.core,
-        glowColor: palette.glow,
+        vx: (Math.random() - 0.5) * 2.2 * depth,
+        vy: -(1.2 + Math.random() * 2.8) * depth,
+        color: starPalette[Math.floor(Math.random() * starPalette.length)],
       };
     });
 
-    const moteColors = [
-      'rgba(240, 171, 252, 0.55)',
-      'rgba(192, 132, 252, 0.5)',
-      'rgba(103, 232, 249, 0.52)',
-      'rgba(147, 197, 253, 0.5)',
-      'rgba(255, 255, 255, 0.48)',
-    ];
+    // 3. Delicate Small Pinpoint Glints (Max 3.8px, Weighted Around Outer Upper Sky & Wings)
+    const glintColors = ['#e0f2fe', '#f5d0fe', '#fef3c7', '#ffffff'];
+    this.tinyGlints = Array.from({ length: glintCount }, (_, idx) => {
+      const x =
+        idx % 3 === 0
+          ? this.width * (0.05 + Math.random() * 0.24)
+          : idx % 3 === 1
+          ? this.width * (0.71 + Math.random() * 0.24)
+          : this.width * (0.28 + Math.random() * 0.44);
+      const y =
+        idx % 3 === 2
+          ? this.height * (0.04 + Math.random() * 0.22)
+          : this.height * (0.08 + Math.random() * 0.66);
 
-    this.motes = Array.from({ length: moteCount }, () => {
+      return {
+        x,
+        y,
+        depth: 0.45 + Math.random() * 0.45,
+        armLength: 2.2 + Math.random() * 1.5,
+        phase: Math.random() * Math.PI * 2,
+        speed: 0.8 + Math.random() * 0.75,
+        vx: (Math.random() - 0.5) * 1.8,
+        vy: -(0.6 + Math.random() * 1.5),
+        angle: (Math.random() - 0.5) * 0.35,
+        color: glintColors[idx % glintColors.length],
+      };
+    });
+
+    // 4. Falling Cosmic Dewdrops Drifting Down From Starry Night Sky
+    const dewColors = ['#e0f2fe', '#f5d0fe', '#bae6fd', '#fde68a'];
+    this.cosmicDew = Array.from({ length: dewCount }, (_, i) => {
+      const depth = 0.3 + Math.random() * 0.7;
+      return {
+        x: Math.random() * this.width,
+        y: Math.random() * this.height * 0.86,
+        depth,
+        radius: 0.58 + Math.random() * 0.65 * depth,
+        tailLength: 9 + Math.random() * 14 * depth,
+        vx: (3.0 + Math.random() * 5.5) * depth,
+        vy: (17 + Math.random() * 24) * depth,
+        swayAmp: 5 + Math.random() * 12,
+        swayFreq: 0.55 + Math.random() * 0.85,
+        phase: Math.random() * Math.PI * 2,
+        fadeSpeed: 0.6 + Math.random() * 0.7,
+        maxAlpha: 0.32 + Math.random() * 0.34,
+        color: dewColors[i % dewColors.length],
+      };
+    });
+
+    // 5. Warm Sunset & Cosmic Rising Embers From Mirror Water Horizon
+    const emberColors = [
+      'rgba(253, 186, 116, 0.62)',
+      'rgba(251, 113, 133, 0.56)',
+      'rgba(240, 171, 252, 0.54)',
+      'rgba(103, 232, 249, 0.52)',
+    ];
+    this.embers = Array.from({ length: emberCount }, () => {
       const depth = 0.4 + Math.random() * 0.6;
       return {
         x: Math.random() * this.width,
-        y: (0.22 + Math.random() * 0.78) * this.height,
+        y: (0.48 + Math.random() * 0.5) * this.height,
         depth,
-        radius: 2.2 + Math.random() * 5.2,
-        alpha: 0.12 + Math.random() * 0.28,
-        vy: -(5 + Math.random() * 9) * depth,
-        swayAmp: 6 + Math.random() * 14,
-        swayFreq: 0.35 + Math.random() * 0.6,
+        radius: 1.5 + Math.random() * 3.2,
+        alpha: 0.16 + Math.random() * 0.28,
+        vy: -(8 + Math.random() * 14) * depth,
+        swayAmp: 7 + Math.random() * 16,
+        swayFreq: 0.45 + Math.random() * 0.7,
         phase: Math.random() * Math.PI * 2,
-        color: moteColors[Math.floor(Math.random() * moteColors.length)],
+        color: emberColors[Math.floor(Math.random() * emberColors.length)],
       };
+    });
+
+    // 6. Planar Mirror Water Specular Shimmer (Strictly Confined to Bottom Water Mirror >= 88.5%)
+    const waterColors = [
+      'rgba(253, 224, 71, 0.82)',
+      'rgba(253, 186, 116, 0.82)',
+      'rgba(251, 113, 133, 0.75)',
+      'rgba(240, 171, 252, 0.70)',
+    ];
+    this.waterStreaks = Array.from({ length: streakCount }, (_, i) => ({
+      xFrac: 0.22 + (Math.random() + Math.random()) * 0.28,
+      yFrac: 0.885 + Math.random() * 0.105,
+      width: 32 + Math.random() * 72,
+      thickness: 1.1 + Math.random() * 2.0,
+      phase: Math.random() * Math.PI * 2,
+      speed: 0.6 + Math.random() * 0.65,
+      driftAmp: 10 + Math.random() * 20,
+      alpha: 0.1 + Math.random() * 0.14,
+      color: waterColors[i % waterColors.length],
+    }));
+  }
+
+  private spawnMeteor(fromRightCorner = Math.random() < 0.65): void {
+    const angle = fromRightCorner
+      ? Math.PI - (0.54 + Math.random() * 0.2)
+      : 0.5 + Math.random() * 0.2;
+
+    const x = fromRightCorner
+      ? this.width * (0.58 + Math.random() * 0.38)
+      : this.width * (0.04 + Math.random() * 0.36);
+    const y = this.height * (0.02 + Math.random() * 0.36);
+    const speed = 580 + Math.random() * 340;
+
+    const colors = ['#bae6fd', '#7dd3fc', '#f5d0fe', '#fde68a'];
+    this.meteors.push({
+      x,
+      y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      length: 110 + Math.random() * 90,
+      width: 1.15 + Math.random() * 0.65,
+      life: 0,
+      maxLife: 0.52 + Math.random() * 0.38,
+      color: colors[Math.floor(Math.random() * colors.length)],
     });
   }
 
@@ -636,25 +843,12 @@ export class GalaxyBackgroundComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  private spawnMeteor(): void {
-    const startFromLeft = Math.random() < 0.72;
-    const x = startFromLeft
-      ? this.width * (0.05 + Math.random() * 0.55)
-      : this.width * (0.45 + Math.random() * 0.45);
-    const y = this.height * (0.03 + Math.random() * 0.34);
-    const speed = 520 + Math.random() * 340;
-    const angle = startFromLeft ? 0.32 + Math.random() * 0.22 : Math.PI - (0.32 + Math.random() * 0.22);
-
-    this.meteors.push({
-      x,
-      y,
-      vx: Math.cos(angle) * speed,
-      vy: Math.sin(angle) * speed,
-      length: 95 + Math.random() * 85,
-      life: 0,
-      maxLife: 0.65 + Math.random() * 0.45,
-      color: Math.random() < 0.5 ? '#bae6fd' : '#f5d0fe',
-    });
+  private centerProtectionFactor(x: number, y: number): number {
+    if (!this.width || !this.height) return 1;
+    const dx = Math.abs(x / this.width - 0.5) * 2;
+    const dy = Math.abs(y / this.height - 0.44) * 2;
+    const dist = Math.hypot(dx * 0.95, dy * 0.85);
+    return 0.44 + 0.56 * Math.min(1, dist / 0.86);
   }
 
   private drawFrame(dt: number): void {
@@ -664,54 +858,128 @@ export class GalaxyBackgroundComponent implements AfterViewInit, OnDestroy {
 
     this.elapsedTime += dt;
 
-    // Smooth parallax interpolation
-    this.parallaxX += (this.mouseTargetX * 14 - this.parallaxX) * 0.05;
-    this.parallaxY += (this.mouseTargetY * 10 - this.parallaxY) * 0.05;
+    this.parallaxX += (this.mouseTargetX * 12 - this.parallaxX) * 0.045;
+    this.parallaxY += (this.mouseTargetY * 9 - this.parallaxY) * 0.045;
 
     ctx.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
     ctx.clearRect(0, 0, this.width, this.height);
 
-    // 1. Floating Nebula Bokeh Motes (behind pinpoint stars)
     ctx.save();
-    ctx.globalCompositeOperation = 'lighter';
-    for (const m of this.motes) {
-      m.y += m.vy * dt;
-      if (m.y < -20) {
-        m.y = this.height + 20;
-        m.x = Math.random() * this.width;
-      }
+    ctx.globalCompositeOperation = 'screen';
 
-      const swayX = Math.sin(this.elapsedTime * m.swayFreq + m.phase) * m.swayAmp;
-      const drawX = m.x + swayX + this.parallaxX * m.depth * 1.1;
-      const drawY = m.y + this.parallaxY * m.depth * 1.1;
-      const pulse = 0.65 + 0.35 * Math.sin(this.elapsedTime * 1.2 + m.phase);
+    // 1. Volumetric God Rays
+    const diag = Math.hypot(this.width, this.height);
+    for (const b of this.beams) {
+      const waveAngle = b.angle + Math.sin(this.elapsedTime * b.speed + b.phase) * b.swayAmp;
+      const ox = this.width * b.originXFrac + this.parallaxX * b.depth;
+      const oy = this.height * b.originYFrac + this.parallaxY * b.depth;
+      const len = diag * b.lengthFrac;
+      const ex = ox + Math.cos(waveAngle) * len;
+      const ey = oy + Math.sin(waveAngle) * len;
 
-      const grad = ctx.createRadialGradient(drawX, drawY, 0, drawX, drawY, m.radius * 2.4);
-      grad.addColorStop(0, m.color);
+      const perpX = -Math.sin(waveAngle);
+      const perpY = Math.cos(waveAngle);
+
+      const exposureWave = 0.78 + 0.22 * Math.sin(this.elapsedTime * (b.speed * 0.85) + b.phase);
+      ctx.globalAlpha = b.alpha * exposureWave;
+
+      const grad = ctx.createLinearGradient(ox, oy, ex, ey);
+      grad.addColorStop(0, b.colorInner);
+      grad.addColorStop(0.45, b.colorMid);
       grad.addColorStop(1, 'rgba(0,0,0,0)');
 
-      ctx.globalAlpha = m.alpha * pulse;
       ctx.fillStyle = grad;
       ctx.beginPath();
-      ctx.arc(drawX, drawY, m.radius * 2.4, 0, Math.PI * 2);
+      ctx.moveTo(ox + perpX * b.baseWidth * 0.5, oy + perpY * b.baseWidth * 0.5);
+      ctx.lineTo(ex + perpX * b.endWidth * 0.5, ey + perpY * b.endWidth * 0.5);
+      ctx.lineTo(ex - perpX * b.endWidth * 0.5, ey - perpY * b.endWidth * 0.5);
+      ctx.lineTo(ox - perpX * b.baseWidth * 0.5, oy - perpY * b.baseWidth * 0.5);
+      ctx.closePath();
       ctx.fill();
     }
-    ctx.restore();
 
-    // 2. Crisp Twinkling Pinpoint Starfield
-    for (const s of this.stars) {
+    // 2. Warm Sunset & Cosmic Rising Embers From Horizon Water
+    for (const e of this.embers) {
+      e.y += e.vy * dt;
+      if (e.y < this.height * 0.14) {
+        e.y = this.height + 16;
+        e.x = Math.random() * this.width;
+      }
+
+      const swayX = Math.sin(this.elapsedTime * e.swayFreq + e.phase) * e.swayAmp;
+      const drawX = e.x + swayX + this.parallaxX * e.depth * 1.1;
+      const drawY = e.y + this.parallaxY * e.depth * 1.1;
+      const shimmer = 0.5 + 0.5 * Math.sin(this.elapsedTime * 1.4 + e.phase);
+
+      const grad = ctx.createRadialGradient(drawX, drawY, 0, drawX, drawY, e.radius * 2.5);
+      grad.addColorStop(0, e.color);
+      grad.addColorStop(1, 'rgba(0,0,0,0)');
+
+      ctx.globalAlpha = e.alpha * (0.55 + 0.45 * shimmer) * this.centerProtectionFactor(drawX, drawY);
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(drawX, drawY, e.radius * 2.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // 3. Falling Cosmic Dewdrops Drifting Down From Night Sky
+    for (const dw of this.cosmicDew) {
+      dw.x += dw.vx * dt;
+      dw.y += dw.vy * dt;
+
+      if (dw.y > this.height * 0.88) {
+        dw.y = -20;
+        dw.x = Math.random() * this.width;
+      }
+      if (dw.x > this.width + 20) dw.x = -20;
+
+      const sway = Math.sin(this.elapsedTime * dw.swayFreq + dw.phase) * dw.swayAmp;
+      const px = dw.x + sway + this.parallaxX * dw.depth * 0.95;
+      const py = dw.y + this.parallaxY * dw.depth * 0.95;
+
+      const horizonFade = py > this.height * 0.74 ? Math.max(0, 1 - (py - this.height * 0.74) / (this.height * 0.14)) : 1;
+      const pulse = 0.55 + 0.45 * Math.sin(this.elapsedTime * dw.fadeSpeed + dw.phase);
+      const alpha = dw.maxAlpha * pulse * horizonFade * this.centerProtectionFactor(px, py);
+      if (alpha < 0.02) continue;
+
+      const tailX = px - dw.vx * 0.25;
+      const tailY = py - dw.tailLength;
+      const tailGrad = ctx.createLinearGradient(px, py, tailX, tailY);
+      tailGrad.addColorStop(0, dw.color);
+      tailGrad.addColorStop(1, 'rgba(0,0,0,0)');
+
+      ctx.globalAlpha = alpha * 0.65;
+      ctx.strokeStyle = tailGrad;
+      ctx.lineWidth = dw.radius * 1.1;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(px, py);
+      ctx.lineTo(tailX, tailY);
+      ctx.stroke();
+
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      ctx.arc(px, py, dw.radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // 4. Delicate Small Fading Milky Way Stars (0.38px - 0.95px)
+    for (const s of this.microStars) {
       s.x += s.vx * dt;
       s.y += s.vy * dt;
 
       if (s.x > this.width + 8) s.x = -8;
-      if (s.y < -8) s.y = this.height + 8;
+      if (s.x < -8) s.x = this.width + 8;
+      if (s.y < -8) s.y = this.height * 0.88;
 
-      const px = s.x + this.parallaxX * s.depth * 0.65;
-      const py = s.y + this.parallaxY * s.depth * 0.65;
+      const px = s.x + this.parallaxX * s.depth * 0.75;
+      const py = s.y + this.parallaxY * s.depth * 0.75;
 
-      const twinkleWave = 0.5 + 0.5 * Math.sin(this.elapsedTime * s.twinkleSpeed + s.phase);
-      const twinkle = 0.25 + 0.75 * Math.pow(twinkleWave, 1.35);
-      const alpha = s.baseAlpha * twinkle;
+      const wave = 0.5 + 0.5 * Math.sin(this.elapsedTime * s.fadeSpeed + s.phase);
+      const visibility = Math.pow(wave, 1.9);
+      const alpha = s.maxAlpha * visibility * this.centerProtectionFactor(px, py);
+      if (alpha < 0.015) continue;
 
       ctx.globalAlpha = alpha;
       ctx.fillStyle = s.color;
@@ -719,120 +987,126 @@ export class GalaxyBackgroundComponent implements AfterViewInit, OnDestroy {
       ctx.arc(px, py, s.radius, 0, Math.PI * 2);
       ctx.fill();
 
-      // Subtle glow ring on larger stars
-      if (s.radius > 1.25) {
-        ctx.globalAlpha = alpha * 0.34;
+      if (s.radius > 0.72) {
+        ctx.globalAlpha = alpha * 0.3;
         ctx.beginPath();
-        ctx.arc(px, py, s.radius * 2.8, 0, Math.PI * 2);
+        ctx.arc(px, py, s.radius * 2.4, 0, Math.PI * 2);
         ctx.fill();
       }
     }
 
-    // 3. Prominent 4-Point Diamond Sparkling Stars
-    ctx.save();
-    ctx.globalCompositeOperation = 'lighter';
-    for (const sp of this.sparkles) {
-      sp.x += sp.vx * dt;
-      sp.y += sp.vy * dt;
-      sp.angle += sp.rotSpeed * dt;
+    // 5. Delicate Pinpoint Star Glints (Max 3.8px Along Outer Sky & Upper Crown)
+    for (const g of this.tinyGlints) {
+      g.x += g.vx * dt;
+      g.y += g.vy * dt;
 
-      if (sp.x > this.width + 20) sp.x = -20;
-      if (sp.y < -20) sp.y = this.height + 20;
+      if (g.x > this.width + 12) g.x = -12;
+      if (g.x < -12) g.x = this.width + 12;
+      if (g.y < -12) g.y = this.height * 0.74;
 
-      const px = sp.x + this.parallaxX * sp.depth * 1.25;
-      const py = sp.y + this.parallaxY * sp.depth * 1.25;
+      const px = g.x + this.parallaxX * g.depth;
+      const py = g.y + this.parallaxY * g.depth;
+      const wave = 0.5 + 0.5 * Math.sin(this.elapsedTime * g.speed + g.phase);
+      const visibility = Math.pow(wave, 2.0);
+      if (visibility < 0.05) continue;
 
-      const rawSin = 0.5 + 0.5 * Math.sin(this.elapsedTime * sp.speed + sp.phase);
-      const pulse = 0.38 + 0.62 * Math.pow(rawSin, 1.8);
-      const flare = sp.size * (0.78 + 0.48 * pulse);
+      const arm = g.armLength * (0.7 + 0.3 * visibility);
+      const core = Math.max(0.4, arm * 0.14);
 
-      // Soft corona halo
-      const halo = ctx.createRadialGradient(px, py, 0, px, py, flare * 2.1);
-      halo.addColorStop(0, sp.coreColor);
-      halo.addColorStop(0.28, sp.glowColor);
-      halo.addColorStop(1, 'rgba(0,0,0,0)');
-
-      ctx.globalAlpha = 0.65 * pulse;
-      ctx.fillStyle = halo;
-      ctx.beginPath();
-      ctx.arc(px, py, flare * 2.1, 0, Math.PI * 2);
-      ctx.fill();
-
-      // 4-point diffraction star spikes
       ctx.save();
       ctx.translate(px, py);
-      ctx.rotate(sp.angle);
-      ctx.globalAlpha = 0.45 + 0.55 * pulse;
-      ctx.fillStyle = sp.coreColor;
-
-      const armLong = flare * 1.55;
-      const armThin = Math.max(0.85, flare * 0.14);
+      ctx.rotate(g.angle);
+      ctx.globalAlpha = 0.58 * visibility * this.centerProtectionFactor(px, py);
+      ctx.fillStyle = g.color;
 
       ctx.beginPath();
-      ctx.moveTo(0, -armLong);
-      ctx.quadraticCurveTo(armThin, -armThin, armLong, 0);
-      ctx.quadraticCurveTo(armThin, armThin, 0, armLong);
-      ctx.quadraticCurveTo(-armThin, armThin, -armLong, 0);
-      ctx.quadraticCurveTo(-armThin, -armThin, 0, -armLong);
+      ctx.moveTo(0, -arm);
+      ctx.quadraticCurveTo(core, -core, arm, 0);
+      ctx.quadraticCurveTo(core, core, 0, arm);
+      ctx.quadraticCurveTo(-core, core, -arm, 0);
+      ctx.quadraticCurveTo(-core, -core, 0, -arm);
       ctx.closePath();
       ctx.fill();
       ctx.restore();
     }
-    ctx.restore();
 
-    // 4. Shimmering Shooting Stars across Indigo Zenith
+    // 6. Planar Mirror Water Specular Reflections Along Bottom Horizon
+    for (const w of this.waterStreaks) {
+      const sway = Math.sin(this.elapsedTime * w.speed + w.phase) * w.driftAmp;
+      const cx = this.width * w.xFrac + sway + this.parallaxX * 0.8;
+      const cy = this.height * w.yFrac + this.parallaxY * 0.5;
+      const stretch = 0.85 + 0.25 * Math.cos(this.elapsedTime * (w.speed * 0.9) + w.phase);
+      const halfW = w.width * 0.5 * stretch;
+
+      const waterGrad = ctx.createLinearGradient(cx - halfW, cy, cx + halfW, cy);
+      waterGrad.addColorStop(0, 'rgba(0,0,0,0)');
+      waterGrad.addColorStop(0.5, w.color);
+      waterGrad.addColorStop(1, 'rgba(0,0,0,0)');
+
+      ctx.globalAlpha = w.alpha * (0.65 + 0.35 * Math.sin(this.elapsedTime * w.speed + w.phase));
+      ctx.strokeStyle = waterGrad;
+      ctx.lineWidth = w.thickness;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(cx - halfW, cy);
+      ctx.lineTo(cx + halfW, cy);
+      ctx.stroke();
+    }
+
+    // 7. Anime Shooting Star Showers Matching Artwork Vectors (Refined Thin Streaks)
     if (!this.reduceMotion) {
       this.nextMeteorDelay -= dt;
       if (this.nextMeteorDelay <= 0) {
-        this.spawnMeteor();
-        this.nextMeteorDelay = 3.2 + Math.random() * 4.2;
-      }
-    }
-
-    if (this.meteors.length > 0) {
-      ctx.save();
-      ctx.globalCompositeOperation = 'lighter';
-      for (let i = this.meteors.length - 1; i >= 0; i--) {
-        const m = this.meteors[i];
-        m.life += dt;
-        m.x += m.vx * dt;
-        m.y += m.vy * dt;
-
-        if (m.life >= m.maxLife) {
-          this.meteors.splice(i, 1);
-          continue;
+        const burst = Math.random() < 0.3 ? 2 : 1;
+        for (let b = 0; b < burst; b++) {
+          this.spawnMeteor();
         }
-
-        const progress = m.life / m.maxLife;
-        const alpha = progress < 0.2 ? progress / 0.2 : 1 - (progress - 0.2) / 0.8;
-        const speedMag = Math.hypot(m.vx, m.vy) || 1;
-        const tailX = m.x - (m.vx / speedMag) * m.length;
-        const tailY = m.y - (m.vy / speedMag) * m.length;
-
-        const grad = ctx.createLinearGradient(m.x, m.y, tailX, tailY);
-        grad.addColorStop(0, '#ffffff');
-        grad.addColorStop(0.28, m.color);
-        grad.addColorStop(1, 'rgba(0,0,0,0)');
-
-        ctx.globalAlpha = Math.max(0, alpha * 0.88);
-        ctx.strokeStyle = grad;
-        ctx.lineWidth = 2.1;
-        ctx.lineCap = 'round';
-        ctx.beginPath();
-        ctx.moveTo(m.x, m.y);
-        ctx.lineTo(tailX, tailY);
-        ctx.stroke();
-
-        // Bright meteor head
-        ctx.fillStyle = '#ffffff';
-        ctx.beginPath();
-        ctx.arc(m.x, m.y, 2.2, 0, Math.PI * 2);
-        ctx.fill();
+        this.nextMeteorDelay = 2.0 + Math.random() * 2.4;
       }
-      ctx.restore();
     }
 
+    for (let i = this.meteors.length - 1; i >= 0; i--) {
+      const m = this.meteors[i];
+      m.life += dt;
+      m.x += m.vx * dt;
+      m.y += m.vy * dt;
+
+      if (m.life >= m.maxLife) {
+        this.meteors.splice(i, 1);
+        continue;
+      }
+
+      const progress = m.life / m.maxLife;
+      const alpha = (progress < 0.18 ? progress / 0.18 : Math.max(0, 1 - (progress - 0.18) / 0.82)) * 0.72;
+      const speedMag = Math.hypot(m.vx, m.vy) || 1;
+      const tailX = m.x - (m.vx / speedMag) * m.length;
+      const tailY = m.y - (m.vy / speedMag) * m.length;
+
+      const grad = ctx.createLinearGradient(m.x, m.y, tailX, tailY);
+      grad.addColorStop(0, '#ffffff');
+      grad.addColorStop(0.25, m.color);
+      grad.addColorStop(1, 'rgba(0,0,0,0)');
+
+      ctx.globalAlpha = alpha;
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = m.width;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(m.x, m.y);
+      ctx.lineTo(tailX, tailY);
+      ctx.stroke();
+
+      const headHalo = ctx.createRadialGradient(m.x, m.y, 0, m.x, m.y, 5.5);
+      headHalo.addColorStop(0, '#ffffff');
+      headHalo.addColorStop(0.45, m.color);
+      headHalo.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = headHalo;
+      ctx.beginPath();
+      ctx.arc(m.x, m.y, 5.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.restore();
     ctx.globalAlpha = 1;
   }
 }
-
