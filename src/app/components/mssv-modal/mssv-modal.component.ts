@@ -106,21 +106,21 @@ import { AuthService } from '../../services/auth.service';
       animation: spinSlow 10s linear infinite;
     }
     .portal-badge {
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
       color: #fbbf24;
-      font-weight: 800;
+      font-weight: 700;
     }
     .modal-title {
-      font-size: 1.6rem;
-      font-weight: 900;
+      font-size: 1.55rem;
+      font-weight: 700;
       margin: 6px 0 10px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.03em;
     }
     .modal-desc {
-      font-size: 0.88rem;
-      color: #c5d3e8;
-      line-height: 1.55;
+      font-size: 0.92rem;
+      color: #d1dcec;
+      line-height: 1.6;
       margin-bottom: 22px;
     }
     .modal-desc strong {
@@ -139,10 +139,10 @@ import { AuthService } from '../../services/auth.service';
       gap: 6px;
     }
     .input-label {
-      font-size: 0.76rem;
-      font-weight: 800;
-      color: #c5d3e8;
-      letter-spacing: 0.06em;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: #d1dcec;
+      letter-spacing: 0.02em;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -159,9 +159,9 @@ import { AuthService } from '../../services/auth.service';
       clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
       padding: 12px 14px;
       color: #fbbf24;
-      font-size: 1.15rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
+      font-size: 1.12rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
       outline: none;
       transition: all 0.2s ease;
     }
@@ -176,19 +176,20 @@ import { AuthService } from '../../services/auth.service';
     .input-badge {
       position: absolute;
       right: 14px;
-      font-size: 0.72rem;
-      font-weight: 900;
+      font-size: 0.74rem;
+      font-weight: 700;
       color: #fbbf24;
       background: rgba(229, 169, 60, 0.15);
       border: 1px solid rgba(229, 169, 60, 0.4);
       padding: 3px 8px;
       border-radius: 4px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.04em;
     }
     .field-hint {
-      font-size: 0.72rem;
-      color: #788a9e;
+      font-size: 0.78rem;
+      color: #9fb2c9;
       margin-top: 2px;
+      line-height: 1.4;
     }
     .error-msg {
       padding: 10px 14px;

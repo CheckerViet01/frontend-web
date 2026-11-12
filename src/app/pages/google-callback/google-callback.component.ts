@@ -64,7 +64,7 @@ import { AuthService } from '../../services/auth.service';
     }
     .callback-title {
       font-size: 1.45rem;
-      font-weight: 800;
+      font-weight: 700;
       margin-bottom: 12px;
     }
     .callback-desc {

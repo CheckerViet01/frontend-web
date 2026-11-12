@@ -12,24 +12,24 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
   template: `
     <div class="home-container">
       <!-- ============================================== -->
-      <!-- HERO BANNER: SCI-FI SYSTEM VAULT               -->
+      <!-- HERO BANNER: KHO ĐỀ THI ĐẠI HỌC FPT            -->
       <!-- ============================================== -->
       <header class="hero-section">
         <div class="hero-ambient-nebula"></div>
         
         <!-- Telemetry Status Beacon -->
-        <div class="hero-telemetry-badge font-scifi">
+        <div class="hero-telemetry-badge font-sub">
           <span class="beacon-pulse"></span>
-          <span>HOCDETHIFPT • HỆ THỐNG ĐỀ THI ĐẠI HỌC FPT 2026</span>
+          <span>HocDeThiFPT • Hệ Thống Đề Thi Đại Học FPT 2026</span>
         </div>
 
         <!-- Grand Sci-Fi Title -->
         <h1 class="hero-title font-scifi">
-          <span class="title-scifi-white">HOC DE THI FPT</span>
-          <span class="text-shimmer-cyan"> • SYSTEM VAULT</span>
+          <span class="title-scifi-white">THƯ VIỆN ĐỀ THI</span>
+          <span class="text-shimmer-cyan"> FPT UNIVERSITY</span>
         </h1>
         
-        <p class="hero-sub">
+        <p class="hero-sub font-sub">
           Kho lưu trữ chuẩn format Đại học FPT: Đề Thực hành (<span class="scifi-tag pe-tag">PE</span>), 
           Cuối kỳ (<span class="scifi-tag fe-tag">FE</span>), 
           Trắc nghiệm (<span class="scifi-tag quiz-tag">Quiz</span>), 
@@ -63,12 +63,12 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
             <button class="clear-btn" *ngIf="searchKeyword" (click)="searchKeyword = ''; applyFilters()">
               <i class="fa-solid fa-xmark"></i>
             </button>
-            <div class="search-kbd-hint font-scifi">SEARCH</div>
+            <div class="search-kbd-hint font-scifi">TÌM KIẾM</div>
           </div>
 
           <!-- Quick Subject Filter Chips (Dynamic from Subjects Database) -->
           <div class="quick-subject-tags" *ngIf="subjects().length > 0">
-            <span class="tag-label font-scifi"><i class="fa-solid fa-bolt text-cyan"></i> MÔN PHỔ BIẾN:</span>
+            <span class="tag-label font-sub"><i class="fa-solid fa-bolt text-cyan"></i> Môn phổ biến:</span>
             <button 
               *ngFor="let sub of subjects().slice(0, 7)" 
               class="sub-pill-btn font-scifi"
@@ -88,7 +88,7 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
             </div>
             <div class="kpi-data">
               <div class="kpi-num font-scifi text-cyan">{{ exams().length }}</div>
-              <div class="kpi-label font-scifi">ĐỀ THI LƯU TRỮ</div>
+              <div class="kpi-label font-sub">Đề Thi Lưu Trữ</div>
             </div>
           </div>
 
@@ -100,7 +100,7 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
             </div>
             <div class="kpi-data">
               <div class="kpi-num font-scifi text-gold">{{ subjects().length }}</div>
-              <div class="kpi-label font-scifi">MÔN HỌC FPT</div>
+              <div class="kpi-label font-sub">Môn Học FPT</div>
             </div>
           </div>
 
@@ -112,7 +112,7 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
             </div>
             <div class="kpi-data">
               <div class="kpi-num font-scifi text-purple">{{ totalViews() }}</div>
-              <div class="kpi-label font-scifi">LƯỢT TRA CỨU</div>
+              <div class="kpi-label font-sub">Lượt Tra Cứu</div>
             </div>
           </div>
 
@@ -124,7 +124,7 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
             </div>
             <div class="kpi-data">
               <div class="kpi-num font-scifi text-emerald">{{ totalDownloads() }}</div>
-              <div class="kpi-label font-scifi">LƯỢT TẢI GIVEN</div>
+              <div class="kpi-label font-sub">Lượt Tải Given</div>
             </div>
           </div>
         </div>
@@ -659,9 +659,9 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       border: 1px solid rgba(0, 240, 255, 0.35);
       clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
       color: #00f0ff;
-      font-size: 0.74rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
       margin-bottom: 24px;
       position: relative;
       z-index: 1;
@@ -677,25 +677,25 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
     }
 
     .hero-title {
-      font-size: 3.3rem;
-      font-weight: 900;
-      line-height: 1.15;
-      margin-bottom: 20px;
+      font-size: 3.15rem;
+      font-weight: 700;
+      line-height: 1.18;
+      margin-bottom: 18px;
       position: relative;
       z-index: 1;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.03em;
     }
     .title-scifi-white {
       color: #ffffff;
-      text-shadow: 0 0 20px rgba(255, 255, 255, 0.4), 0 0 40px rgba(0, 240, 255, 0.3);
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.35), 0 0 40px rgba(0, 240, 255, 0.25);
     }
 
     .hero-sub {
       max-width: 860px;
       margin: 0 auto 32px;
-      font-size: 1.05rem;
-      color: #c5d3e8;
-      line-height: 1.8;
+      font-size: 1.02rem;
+      color: #d6e2f0;
+      line-height: 1.75;
       position: relative;
       z-index: 1;
       font-weight: 500;
@@ -704,9 +704,9 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       display: inline-block;
       padding: 2px 8px;
       font-family: var(--font-scifi);
-      font-weight: 800;
-      font-size: 0.82rem;
-      letter-spacing: 0.05em;
+      font-weight: 700;
+      font-size: 0.84rem;
+      letter-spacing: 0.03em;
       clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
     }
     .pe-tag { color: #00f0ff; background: rgba(0, 240, 255, 0.14); border: 1px solid rgba(0, 240, 255, 0.45); }
@@ -787,14 +787,14 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       color: #ffffff;
     }
     .search-kbd-hint {
-      font-size: 0.7rem;
+      font-size: 0.74rem;
       color: #04060c;
       background: #00f0ff;
-      padding: 4px 10px;
+      padding: 4px 12px;
       clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
       margin-left: 10px;
-      font-weight: 900;
-      letter-spacing: 0.08em;
+      font-weight: 700;
+      letter-spacing: 0.04em;
     }
 
     .quick-subject-tags {
@@ -806,10 +806,10 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       margin-top: 16px;
     }
     .tag-label {
-      font-size: 0.74rem;
-      color: #788a9e;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      font-size: 0.84rem;
+      color: #9fb2c9;
+      font-weight: 600;
+      letter-spacing: 0.01em;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -817,13 +817,13 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
     .sub-pill-btn {
       background: rgba(10, 17, 34, 0.85);
       border: 1px solid rgba(0, 240, 255, 0.28);
-      color: #c5d3e8;
+      color: #e2e8f0;
       padding: 5px 14px;
       clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
-      font-size: 0.76rem;
-      font-weight: 800;
+      font-size: 0.82rem;
+      font-weight: 700;
       cursor: pointer;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.03em;
       transition: all 0.2s ease;
     }
     .sub-pill-btn:hover, .sub-pill-btn.active {
@@ -890,20 +890,21 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       text-align: left;
     }
     .kpi-num {
-      font-size: 1.65rem;
-      font-weight: 900;
+      font-size: 1.75rem;
+      font-weight: 700;
       line-height: 1.1;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.02em;
     }
     .text-cyan { color: #00f0ff; }
     .text-gold { color: #fbbf24; }
     .text-purple { color: #c084fc; }
     .text-emerald { color: #34d399; }
     .kpi-label {
-      font-size: 0.72rem;
-      color: #788a9e;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      font-size: 0.84rem;
+      color: #a8bad0;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      margin-top: 2px;
     }
     .kpi-divider {
       width: 1px;
@@ -927,12 +928,12 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       transform: skewX(-14deg);
       background: rgba(9, 15, 29, 0.90);
       border: 1.5px solid rgba(0, 240, 255, 0.3);
-      color: #c5d3e8;
+      color: #e2e8f0;
       padding: 11px 24px;
       cursor: pointer;
-      font-weight: 800;
-      font-size: 0.86rem;
-      letter-spacing: 0.06em;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.03em;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
     }
@@ -959,12 +960,12 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       color: #00f0ff;
     }
     .tab-count {
-      font-size: 0.7rem;
+      font-size: 0.74rem;
       background: rgba(0, 240, 255, 0.15);
       color: #00f0ff;
       padding: 2px 7px;
       border-radius: 4px;
-      font-weight: 800;
+      font-weight: 700;
     }
 
     /* Filters Bar */
@@ -1012,7 +1013,7 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       color: #ffffff;
       padding: 10px 38px 10px 40px;
       clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
-      font-size: 0.88rem;
+      font-size: 0.92rem;
       font-weight: 600;
       cursor: pointer;
       outline: none;
@@ -1034,13 +1035,13 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       margin-left: auto;
     }
     .results-chip {
-      font-size: 0.78rem;
-      color: #c5d3e8;
+      font-size: 0.86rem;
+      color: #e2e8f0;
       font-weight: 700;
       display: flex;
       align-items: center;
       gap: 6px;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
     }
     .chip-dot {
       width: 7px;
@@ -1053,15 +1054,15 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       background: rgba(244, 63, 94, 0.15);
       border: 1px solid rgba(244, 63, 94, 0.4);
       color: #fb7185;
-      padding: 6px 14px;
+      padding: 7px 14px;
       clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
-      font-size: 0.74rem;
-      font-weight: 800;
+      font-size: 0.8rem;
+      font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.03em;
       transition: all 0.2s;
     }
     .btn-reset-filter:hover {
@@ -1076,7 +1077,7 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
     }
     .tech-slash {
       color: #00f0ff;
-      font-weight: 900;
+      font-weight: 700;
       margin-right: 4px;
     }
 
@@ -1167,27 +1168,27 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       min-width: 0;
     }
     .subject-badge {
-      font-size: 0.8rem;
-      font-weight: 800;
+      font-size: 0.82rem;
+      font-weight: 700;
       color: #00f0ff;
       background: rgba(0, 240, 255, 0.12);
-      padding: 3px 9px;
+      padding: 4px 10px;
       clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
       border: 1px solid rgba(0, 240, 255, 0.4);
     }
     .exam-title-badge {
       font-size: 1.15rem;
-      font-weight: 800;
+      font-weight: 700;
       color: #ffffff;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       max-width: 380px;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.02em;
     }
     .semester-pill {
-      font-size: 0.76rem;
-      color: #788a9e;
+      font-size: 0.8rem;
+      color: #a5b8d0;
       font-weight: 600;
     }
 
@@ -1203,13 +1204,13 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       color: #34d399;
       padding: 6px 14px;
       clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
-      font-size: 0.78rem;
-      font-weight: 800;
+      font-size: 0.82rem;
+      font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.02em;
       transition: all 0.2s;
     }
     .btn-topbar-zip:hover {
@@ -1218,7 +1219,7 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       box-shadow: 0 0 16px rgba(16, 185, 129, 0.6);
     }
     .zip-cnt-tag {
-      font-size: 0.68rem;
+      font-size: 0.72rem;
       background: rgba(0, 0, 0, 0.4);
       padding: 1px 6px;
       border-radius: 4px;
@@ -1229,8 +1230,8 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       color: #fb7185;
       padding: 6px 12px;
       clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
-      font-size: 0.8rem;
-      font-weight: 800;
+      font-size: 0.82rem;
+      font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -1248,9 +1249,9 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       color: #00f0ff;
       padding: 6px 12px;
       clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -1327,15 +1328,15 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       background: rgba(0, 240, 255, 0.12);
       border: 1px solid rgba(0, 240, 255, 0.4);
       color: #00f0ff;
-      padding: 5px 12px;
+      padding: 6px 12px;
       clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
-      font-size: 0.78rem;
-      font-weight: 800;
+      font-size: 0.82rem;
+      font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.02em;
       transition: all 0.2s;
     }
     .btn-hud-nav:disabled {
@@ -1390,8 +1391,8 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       color: #00f0ff;
     }
     .zoom-value {
-      font-size: 0.76rem;
-      color: #788a9e;
+      font-size: 0.8rem;
+      color: #a5b8d0;
       min-width: 44px;
       text-align: center;
       font-weight: 600;
@@ -1400,11 +1401,11 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       background: rgba(229, 169, 60, 0.15);
       border: 1px solid rgba(229, 169, 60, 0.45);
       color: #fbbf24;
-      padding: 4px 10px;
+      padding: 5px 12px;
       clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
-      font-size: 0.74rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
@@ -1491,9 +1492,9 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       left: 2px;
       background: #00f0ff;
       color: #04060c;
-      font-size: 0.6rem;
-      font-weight: 900;
-      padding: 0 4px;
+      font-size: 0.66rem;
+      font-weight: 700;
+      padding: 0 5px;
       border-radius: 2px;
       z-index: 2;
     }
@@ -1524,12 +1525,12 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
     .assistant-nav-tabs button {
       background: transparent;
       border: 1px solid transparent;
-      color: #788a9e;
+      color: #a5b8d0;
       padding: 6px 12px;
       clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -1613,8 +1614,8 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       padding: 4px 10px;
       clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
       cursor: pointer;
-      font-size: 0.74rem;
-      font-weight: 800;
+      font-size: 0.78rem;
+      font-weight: 700;
       transition: all 0.2s;
     }
     .btn-copy-code:hover {
@@ -1757,21 +1758,21 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       font-weight: 700;
     }
     .comment-date {
-      font-size: 0.72rem;
-      color: #788a9e;
+      font-size: 0.76rem;
+      color: #9fb2c9;
       margin-left: auto;
     }
     .comment-text {
-      font-size: 0.86rem;
-      color: #c5d3e8;
-      line-height: 1.55;
+      font-size: 0.9rem;
+      color: #dce6f5;
+      line-height: 1.6;
       word-break: break-word;
     }
     .empty-note {
       text-align: center;
       padding: 30px 16px;
-      color: #788a9e;
-      font-size: 0.86rem;
+      color: #9fb2c9;
+      font-size: 0.9rem;
     }
     .btn-sm {
       padding: 7px 14px;
@@ -1800,16 +1801,16 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
     .standard-content-tabs button {
       background: transparent;
       border: 1px solid transparent;
-      color: #788a9e;
+      color: #a5b8d0;
       padding: 8px 18px;
       clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
-      font-size: 0.86rem;
-      font-weight: 800;
+      font-size: 0.9rem;
+      font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.02em;
       transition: all 0.2s;
     }
     .standard-content-tabs button:hover {

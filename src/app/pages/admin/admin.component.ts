@@ -19,10 +19,10 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
             <div class="emblem-core-glow"></div>
           </div>
           <div class="brand-text-block">
-            <div class="brand-title font-scifi">HOCDETHIFPT</div>
-            <div class="brand-telemetry font-scifi">
+            <div class="brand-title font-scifi">HocDeThiFPT</div>
+            <div class="brand-telemetry font-sub">
               <span class="beacon-dot"></span>
-              <span class="telemetry-text">ADMIN VAULT • WORKSPACE</span>
+              <span class="telemetry-text">QUẢN TRỊ HỆ THỐNG • ONLINE</span>
             </div>
           </div>
         </div>
@@ -50,13 +50,13 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
       <div class="admin-header-card">
         <div class="card-left-hatches"></div>
         <div class="header-left">
-          <div class="telemetry-badge font-scifi">
+          <div class="telemetry-badge font-sub">
             <span class="beacon-pulse"></span>
-            <span>HỆ THỐNG ĐIỀU HÀNH TỐI CAO • ROOT COMMAND</span>
+            <span>HỆ THỐNG ĐIỀU HÀNH TỐI CAO • QUẢN TRỊ VIÊN</span>
           </div>
           <h1 class="header-title font-scifi">
             <span class="title-scifi-white">HỘI ĐỒNG QUẢN TRỊ</span>
-            <span class="text-shimmer-cyan"> • HOCDETHIFPT</span>
+            <span class="text-shimmer-cyan"> • HocDeThiFPT</span>
           </h1>
           <p class="header-sub font-sub">
             Toàn quyền kiểm soát tài khoản người dùng, phân quyền quản trị viên cấp dưới và xuất bản kho đề thi PE, FE, Quiz, PT, Midterm.
@@ -752,17 +752,17 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
     }
 
     .brand-title {
-      font-size: 1.25rem;
-      font-weight: 900;
-      letter-spacing: 0.1em;
+      font-size: 1.32rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
       color: #ffffff;
       text-shadow: 0 0 14px rgba(0, 240, 255, 0.5);
-      line-height: 1.1;
+      line-height: 1.15;
     }
 
     .brand-telemetry {
-      font-size: 0.65rem;
-      letter-spacing: 0.14em;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
       color: #00f0ff;
       display: flex;
       align-items: center;
@@ -824,16 +824,16 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
     }
 
     .admin-nav-name {
-      font-size: 0.95rem;
+      font-size: 0.96rem;
       font-weight: 700;
       color: #ffffff;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.01em;
     }
 
     .admin-nav-role {
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
     }
 
     .badge-master {
@@ -852,9 +852,9 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
       color: #fb7185;
       padding: 9px 18px;
       clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -913,13 +913,13 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 4px 14px;
+      padding: 5px 14px;
       background: rgba(0, 240, 255, 0.1);
       border: 1px solid rgba(0, 240, 255, 0.35);
       clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
       color: #00f0ff;
       margin-bottom: 12px;
     }
@@ -935,10 +935,10 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
 
     .header-title {
       font-size: 2.2rem;
-      font-weight: 900;
-      letter-spacing: 0.05em;
+      font-weight: 700;
+      letter-spacing: 0.03em;
       margin-bottom: 10px;
-      line-height: 1.2;
+      line-height: 1.25;
     }
 
     .title-scifi-white {
@@ -980,9 +980,9 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 0.84rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
     }
 
     .slanted-admin-tab .tab-count {
@@ -1082,14 +1082,15 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
       width: 100%;
       border-collapse: collapse;
       text-align: left;
-      font-size: 0.9rem;
+      font-size: 0.94rem;
     }
 
     .scifi-table th {
       padding: 14px 16px;
       color: #00f0ff;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
       border-bottom: 2px solid rgba(0, 240, 255, 0.35);
       background: rgba(0, 240, 255, 0.05);
       white-space: nowrap;
@@ -1098,7 +1099,8 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
     .scifi-table td {
       padding: 15px 16px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-      color: #c5d3e8;
+      color: #e2e8f0;
+      font-size: 0.94rem;
       vertical-align: middle;
     }
 
@@ -1136,13 +1138,13 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
     }
 
     .mssv-badge {
-      font-weight: 800;
+      font-weight: 700;
       padding: 3px 10px;
       background: rgba(0, 240, 255, 0.14);
       border: 1px solid #00f0ff;
       color: #00f0ff;
       clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       display: inline-block;
     }
 
@@ -1153,10 +1155,10 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
     }
 
     .role-pill {
-      font-size: 0.74rem;
-      font-weight: 800;
+      font-size: 0.78rem;
+      font-weight: 700;
       padding: 4px 10px;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.03em;
       clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
       display: inline-block;
     }
@@ -1211,9 +1213,9 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
       color: #00f0ff;
       padding: 5px 12px;
       clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
-      font-size: 0.74rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -1233,9 +1235,9 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
       color: #fb7185;
       padding: 5px 12px;
       clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
-      font-size: 0.74rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -1251,16 +1253,16 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
 
     .tag-root-admin {
       color: #fbbf24;
-      font-size: 0.74rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
       text-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
     }
 
     .exam-title-text {
       color: #ffffff;
-      font-size: 0.92rem;
-      letter-spacing: 0.03em;
+      font-size: 0.96rem;
+      letter-spacing: 0.01em;
     }
 
     .subject-pill {
@@ -1269,17 +1271,17 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
       color: #00f0ff;
       padding: 3px 10px;
       clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
-      font-size: 0.8rem;
-      font-weight: 800;
+      font-size: 0.82rem;
+      font-weight: 700;
     }
 
     .media-indicator {
-      font-size: 0.82rem;
+      font-size: 0.86rem;
     }
 
     .stats-mini {
-      color: #c5d3e8;
-      font-size: 0.82rem;
+      color: #d1dcec;
+      font-size: 0.86rem;
     }
 
     /* ========================================================= */
@@ -1310,10 +1312,10 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
     }
 
     .form-card-title {
-      font-size: 1.25rem;
-      font-weight: 800;
+      font-size: 1.28rem;
+      font-weight: 700;
       margin-bottom: 20px;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.02em;
     }
 
     .admin-create-grid {
@@ -1334,10 +1336,10 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
     }
 
     .form-label {
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      color: #c5d3e8;
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #d1dcec;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -1349,7 +1351,7 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
       color: #ffffff;
       padding: 11px 16px;
       clip-path: polygon(6px 0, 100% 0, 100% calc(100% - 6px), calc(100% - 6px) 100%, 0 100%, 0 6px);
-      font-size: 0.92rem;
+      font-size: 0.94rem;
       transition: all 0.25s ease;
       width: 100%;
     }
@@ -1388,11 +1390,11 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
     }
 
     .sub-table-title {
-      font-size: 1.05rem;
-      font-weight: 800;
+      font-size: 1.08rem;
+      font-weight: 700;
       color: #ffffff;
       margin-bottom: 16px;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.02em;
     }
 
     /* ========================================================= */
@@ -1462,23 +1464,23 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
     }
 
     .stat-tag {
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      color: #788a9e;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #9fb2c9;
     }
 
     .stat-val {
-      font-size: 2.6rem;
-      font-weight: 900;
-      letter-spacing: 0.04em;
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
       line-height: 1.1;
       margin-bottom: 6px;
     }
 
     .stat-lbl {
-      color: #c5d3e8;
-      font-size: 0.95rem;
+      color: #d1dcec;
+      font-size: 0.96rem;
       font-weight: 600;
     }
 
@@ -1511,9 +1513,9 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
     }
 
     .modal-title {
-      font-size: 1.35rem;
-      font-weight: 900;
-      letter-spacing: 0.05em;
+      font-size: 1.38rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
     }
 
     .modal-close-btn {
@@ -1530,8 +1532,8 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
     }
 
     .modal-sub {
-      color: #c5d3e8;
-      font-size: 0.92rem;
+      color: #d1dcec;
+      font-size: 0.94rem;
       margin-bottom: 22px;
     }
 
@@ -1564,9 +1566,9 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
     }
 
     .upload-title {
-      font-size: 0.84rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
       color: #ffffff;
       display: flex;
       align-items: center;
@@ -1628,14 +1630,14 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
     }
 
     .upload-btn-label span {
-      font-size: 0.88rem;
-      font-weight: 700;
+      font-size: 0.92rem;
+      font-weight: 600;
       color: #ffffff;
     }
 
     .upload-hint {
-      font-size: 0.8rem;
-      color: #788a9e;
+      font-size: 0.82rem;
+      color: #9fb2c9;
       max-width: 500px;
     }
 
@@ -1667,8 +1669,8 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
       color: #fb7185;
       padding: 4px 10px;
       clip-path: polygon(4px 0, 100% 0, 100% calc(100% - 4px), calc(100% - 4px) 100%, 0 100%, 0 4px);
-      font-size: 0.72rem;
-      font-weight: 800;
+      font-size: 0.76rem;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.2s;
     }
@@ -1711,9 +1713,9 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
       left: 4px;
       background: #00f0ff;
       color: #04060c;
-      font-size: 0.65rem;
-      font-weight: 900;
-      padding: 1px 4px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 1px 5px;
       border-radius: 2px;
       z-index: 2;
     }
@@ -1827,7 +1829,7 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
     .text-gold { color: #fbbf24; }
     .text-purple { color: #c084fc; }
     .text-emerald { color: #34d399; }
-    .text-muted { color: #788a9e; }
+    .text-muted { color: #9fb2c9; }
   `]
 })
 export class AdminComponent implements OnInit {

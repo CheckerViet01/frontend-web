@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 /* ========================================================= */
 /* CSS PROPERTY FOR ANIMATED CONIC GRADIENT BORDER           */
@@ -11,12 +11,12 @@
 
 :root {
   /* ======================================================= */
-  /* HIGH-TECH SCI-FI TYPOGRAPHY (From 99designs / FaTiH 〆)   */
+  /* HIGH-TECH VIETNAMESE TYPOGRAPHY (Chakra Petch + BeVNPro)*/
   /* ======================================================= */
-  --font-scifi: 'Orbitron', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-sub: 'Rajdhani', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-fantasy: 'Orbitron', 'Plus Jakarta Sans', sans-serif;
+  --font-scifi: 'Chakra Petch', 'Be Vietnam Pro', sans-serif;
+  --font-sub: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-main: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-fantasy: 'Chakra Petch', 'Be Vietnam Pro', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* ======================================================= */
@@ -172,17 +172,17 @@ body::after {
 /* ========================================================= */
 .font-scifi {
   font-family: var(--font-scifi);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.03em;
 }
 
 .font-sub {
   font-family: var(--font-sub);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.005em;
 }
 
 .font-fantasy {
   font-family: var(--font-scifi);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
 }
 
 .font-mono {
@@ -192,8 +192,8 @@ body::after {
 /* Section Title With Angled Circuit Notch (Like "Media content" in 99designs) */
 .section-tech-title {
   font-family: var(--font-scifi);
-  font-size: 1.8rem;
-  font-weight: 800;
+  font-size: 1.65rem;
+  font-weight: 700;
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -201,7 +201,7 @@ body::after {
   position: relative;
   padding-bottom: 12px;
   margin-bottom: 24px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.03em;
 }
 
 .section-tech-title::after {
@@ -245,11 +245,11 @@ body::after {
   background: #00f0ff;
   color: #04060c !important;
   font-family: var(--font-scifi);
-  font-weight: 900;
-  font-size: 0.88rem;
-  letter-spacing: 0.1em;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  padding: 11px 26px;
+  padding: 11px 24px;
   border: none;
   cursor: pointer;
   display: inline-flex;
@@ -297,8 +297,8 @@ body::after {
   color: #00f0ff;
   font-family: var(--font-scifi);
   font-weight: 700;
-  font-size: 0.84rem;
-  letter-spacing: 0.08em;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   padding: 10px 22px;
   border: 1.5px solid #00f0ff;
@@ -331,9 +331,9 @@ body::after {
   background: linear-gradient(135deg, #e5a93c 0%, #fbbf24 50%, #d49526 100%);
   color: #070911 !important;
   font-family: var(--font-scifi);
-  font-weight: 900;
-  font-size: 0.88rem;
-  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   padding: 11px 24px;
   border: none;
@@ -426,9 +426,9 @@ body::after {
 /* VIBRANT SCI-FI EXAM TYPE BADGES (PE, FE, QUIZ...)         */
 /* ========================================================= */
 .badge-exam {
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   padding: 5px 12px;
   text-transform: uppercase;
   display: inline-flex;

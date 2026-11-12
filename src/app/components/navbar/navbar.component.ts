@@ -18,11 +18,7 @@ import { AuthService } from '../../services/auth.service';
             <div class="emblem-laser-line"></div>
           </div>
           <div class="brand-text-block">
-            <div class="brand-title font-scifi">HOCDETHIFPT</div>
-            <div class="brand-telemetry font-scifi">
-              <span class="beacon-dot"></span>
-              <span class="telemetry-text">SYSTEM VAULT • ONLINE</span>
-            </div>
+            <div class="brand-title font-scifi">HocDeThiFPT</div>
           </div>
         </a>
 
@@ -138,9 +134,9 @@ import { AuthService } from '../../services/auth.service';
       gap: 2px;
     }
     .brand-title {
-      font-size: 1.4rem;
-      font-weight: 900;
-      letter-spacing: 0.16em;
+      font-size: 1.48rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
       color: #ffffff;
       text-shadow: 0 0 14px rgba(0, 240, 255, 0.5);
       line-height: 1.1;
@@ -215,20 +211,20 @@ import { AuthService } from '../../services/auth.service';
       gap: 2px;
     }
     .user-name {
-      font-size: 0.84rem;
-      font-weight: 700;
+      font-size: 0.88rem;
+      font-weight: 600;
       color: #ffffff;
-      letter-spacing: 0.02em;
-      max-width: 160px;
+      letter-spacing: 0.01em;
+      max-width: 170px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
     .mssv-badge {
-      font-size: 0.72rem;
+      font-size: 0.76rem;
       color: #00f0ff;
-      font-weight: 800;
-      letter-spacing: 0.06em;
+      font-weight: 700;
+      letter-spacing: 0.04em;
       display: inline-flex;
       align-items: center;
       gap: 4px;

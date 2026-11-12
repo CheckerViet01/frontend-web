@@ -123,8 +123,8 @@ import { AuthService } from '../../services/auth.service';
       box-shadow: 0 0 25px rgba(0, 240, 255, 0.35);
     }
     .modal-title {
-      font-size: 1.35rem;
-      font-weight: 800;
+      font-size: 1.38rem;
+      font-weight: 700;
       margin-bottom: 8px;
     }
     .modal-desc {
