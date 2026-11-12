@@ -37,7 +37,7 @@ import { AuthService } from '../../services/auth.service';
       align-items: center;
       justify-content: center;
       padding: 24px;
-      background: radial-gradient(circle at center, rgba(14, 22, 54, 0.95) 0%, rgba(5, 7, 19, 0.98) 100%);
+      background: transparent;
     }
     .callback-card {
       width: 100%;

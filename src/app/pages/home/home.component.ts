@@ -639,7 +639,7 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       transform: translateX(-50%);
       width: 900px;
       height: 440px;
-      background: radial-gradient(ellipse, rgba(0, 240, 255, 0.16) 0%, rgba(229, 169, 60, 0.12) 40%, transparent 70%);
+      background: radial-gradient(ellipse, rgba(56, 189, 248, 0.18) 0%, rgba(192, 132, 252, 0.16) 45%, transparent 72%);
       filter: blur(90px);
       pointer-events: none;
       z-index: 0;
@@ -737,10 +737,11 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       display: flex;
       align-items: center;
       padding: 12px 22px;
-      background: rgba(8, 14, 28, 0.92);
-      border: 1.5px solid rgba(0, 240, 255, 0.45);
+      background: rgba(11, 14, 42, 0.76);
+      backdrop-filter: blur(14px) saturate(150%);
+      border: 1.5px solid rgba(56, 189, 248, 0.45);
       clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
-      box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 240, 255, 0.18);
+      box-shadow: 0 16px 40px -10px rgba(4, 6, 22, 0.72), 0 0 25px rgba(56, 189, 248, 0.18);
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .search-box:focus-within {
@@ -842,10 +843,11 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       flex-wrap: wrap;
       padding: 20px 24px;
       margin-top: 36px;
-      background: rgba(8, 14, 28, 0.90);
-      border: 1px solid rgba(0, 240, 255, 0.25);
+      background: rgba(11, 14, 42, 0.74);
+      backdrop-filter: blur(14px) saturate(150%);
+      border: 1px solid rgba(56, 189, 248, 0.28);
       clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
-      box-shadow: 0 16px 45px -8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.06);
+      box-shadow: 0 16px 45px -8px rgba(4, 6, 22, 0.68), 0 0 24px rgba(168, 85, 247, 0.10);
     }
     .kpi-card {
       display: flex;
@@ -926,8 +928,9 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
     }
     .slanted-tab-btn {
       transform: skewX(-14deg);
-      background: rgba(9, 15, 29, 0.90);
-      border: 1.5px solid rgba(0, 240, 255, 0.3);
+      background: rgba(11, 14, 42, 0.74);
+      backdrop-filter: blur(10px);
+      border: 1.5px solid rgba(56, 189, 248, 0.30);
       color: #e2e8f0;
       padding: 11px 24px;
       cursor: pointer;
@@ -977,10 +980,11 @@ import { ExamCardComponent } from '../../components/exam-card/exam-card.componen
       gap: 16px;
       padding: 16px 24px;
       margin-bottom: 30px;
-      background: rgba(8, 14, 28, 0.90);
-      border: 1px solid rgba(0, 240, 255, 0.25);
+      background: rgba(11, 14, 42, 0.74);
+      backdrop-filter: blur(14px) saturate(150%);
+      border: 1px solid rgba(56, 189, 248, 0.28);
       clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 10px 30px rgba(4, 6, 22, 0.65);
     }
     .filter-controls-group {
       display: flex;

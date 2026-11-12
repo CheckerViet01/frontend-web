@@ -90,12 +90,12 @@ import { Exam } from '../../services/exam.service';
       flex-direction: column;
       height: 100%;
       position: relative;
-      background: rgba(9, 15, 29, 0.90);
-      border: 1px solid rgba(0, 240, 255, 0.28);
+      background: rgba(11, 14, 42, 0.74);
+      border: 1px solid rgba(56, 189, 248, 0.30);
       clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
-      backdrop-filter: blur(24px) saturate(190%);
-      -webkit-backdrop-filter: blur(24px) saturate(190%);
-      box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.05);
+      backdrop-filter: blur(16px) saturate(155%);
+      -webkit-backdrop-filter: blur(16px) saturate(155%);
+      box-shadow: 0 16px 40px -10px rgba(4, 6, 22, 0.7), 0 0 24px rgba(168, 85, 247, 0.12);
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       overflow: hidden;
     }
