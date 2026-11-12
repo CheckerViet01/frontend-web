@@ -5,19 +5,23 @@ import { filter } from 'rxjs/operators';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MssvModalComponent } from './components/mssv-modal/mssv-modal.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
+import { GalaxyBackgroundComponent } from './components/galaxy-background/galaxy-background.component';
 import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, NavbarComponent, MssvModalComponent, LoginModalComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    NavbarComponent,
+    MssvModalComponent,
+    LoginModalComponent,
+    GalaxyBackgroundComponent
+  ],
   template: `
-    <!-- Cosmic Space Ambient Glow (Hiển thị khi ở cổng sinh viên) -->
-    <ng-container *ngIf="isUserPortal()">
-      <div class="ambient-glow orb-1"></div>
-      <div class="ambient-glow orb-2"></div>
-      <div class="ambient-glow orb-3"></div>
-    </ng-container>
+    <!-- Animated Sparkling Cosmic Galaxy Backdrop (Hiển thị chung cho cả User Portal & Admin Portal) -->
+    <app-galaxy-background></app-galaxy-background>
 
     <!-- Student Navigation Bar: CHỈ hiển thị ở cổng sinh viên, hoàn toàn ẩn ở cổng quản trị -->
     <app-navbar *ngIf="isUserPortal()" (openLogin)="showLoginModal = true"></app-navbar>
@@ -64,58 +68,17 @@ import { AuthService } from './services/auth.service';
       flex: 1;
       width: 100%;
       height: 100%;
-    }
-    .ambient-glow {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(140px);
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.22;
-      animation: cosmicOrbDrift 24s infinite alternate ease-in-out;
-    }
-    .orb-1 {
-      width: 700px;
-      height: 700px;
-      top: -120px;
-      left: 10%;
-      background: radial-gradient(circle, #00f0ff 0%, #0284c7 45%, transparent 70%);
-    }
-    .orb-2 {
-      width: 720px;
-      height: 720px;
-      top: 40%;
-      right: -160px;
-      background: radial-gradient(circle, #e5a93c 0%, #fbbf24 40%, transparent 70%);
-      animation-delay: -8s;
-    }
-    .orb-3 {
-      width: 600px;
-      height: 600px;
-      bottom: -100px;
-      left: 20%;
-      background: radial-gradient(circle, #a855f7 0%, #7c3aed 45%, transparent 70%);
-      animation-delay: -14s;
-    }
-    @keyframes cosmicOrbDrift {
-      0% {
-        transform: translate(0, 0) scale(0.95);
-      }
-      50% {
-        transform: translate(40px, 30px) scale(1.08);
-      }
-      100% {
-        transform: translate(-30px, 50px) scale(1);
-      }
+      position: relative;
+      z-index: 1;
     }
     .app-footer {
       margin-top: auto;
       padding: 24px 28px;
-      background: rgba(4, 7, 16, 0.96);
-      backdrop-filter: blur(28px) saturate(190%);
-      -webkit-backdrop-filter: blur(28px) saturate(190%);
-      border-top: 1px solid rgba(0, 240, 255, 0.22);
-      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.8);
+      background: rgba(9, 11, 34, 0.78);
+      backdrop-filter: blur(22px) saturate(165%);
+      -webkit-backdrop-filter: blur(22px) saturate(165%);
+      border-top: 1px solid rgba(103, 232, 249, 0.25);
+      box-shadow: 0 -10px 30px rgba(4, 6, 22, 0.65);
       position: relative;
       z-index: 10;
     }

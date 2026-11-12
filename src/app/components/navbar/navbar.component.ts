@@ -59,11 +59,11 @@ import { AuthService } from '../../services/auth.service';
       position: sticky;
       top: 0;
       z-index: 500;
-      background: rgba(5, 8, 18, 0.92);
-      backdrop-filter: blur(28px) saturate(200%);
-      -webkit-backdrop-filter: blur(28px) saturate(200%);
-      border-bottom: 1px solid rgba(0, 240, 255, 0.22);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 240, 255, 0.08);
+      background: rgba(9, 11, 34, 0.76);
+      backdrop-filter: blur(20px) saturate(170%);
+      -webkit-backdrop-filter: blur(20px) saturate(170%);
+      border-bottom: 1px solid rgba(103, 232, 249, 0.25);
+      box-shadow: 0 10px 30px rgba(4, 6, 24, 0.65), 0 0 25px rgba(168, 85, 247, 0.14);
     }
     .navbar-bottom-laser {
       position: absolute;

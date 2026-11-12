@@ -714,10 +714,11 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
       justify-content: space-between;
       padding: 16px 28px;
       margin-bottom: 24px;
-      background: rgba(6, 11, 24, 0.96);
-      border: 1px solid rgba(0, 240, 255, 0.3);
+      background: rgba(10, 13, 38, 0.76);
+      backdrop-filter: blur(16px) saturate(155%);
+      border: 1px solid rgba(56, 189, 248, 0.30);
       clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 24px rgba(0, 240, 255, 0.08);
+      box-shadow: 0 12px 35px rgba(4, 6, 22, 0.68), 0 0 24px rgba(168, 85, 247, 0.14);
       position: relative;
     }
 
@@ -876,10 +877,11 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
     .admin-header-card {
       padding: 34px 32px 28px;
       margin-bottom: 30px;
-      background: rgba(7, 13, 28, 0.94);
-      border: 1px solid rgba(0, 240, 255, 0.28);
+      background: rgba(11, 14, 42, 0.74);
+      backdrop-filter: blur(16px) saturate(150%);
+      border: 1px solid rgba(56, 189, 248, 0.28);
       clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px);
-      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 240, 255, 0.06);
+      box-shadow: 0 16px 45px rgba(4, 6, 22, 0.68), 0 0 28px rgba(168, 85, 247, 0.12);
       position: relative;
       overflow: hidden;
     }
@@ -964,8 +966,8 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
     }
 
     .slanted-admin-tab {
-      background: rgba(10, 17, 34, 0.9);
-      border: 1px solid rgba(0, 240, 255, 0.28);
+      background: rgba(13, 17, 48, 0.74);
+      border: 1px solid rgba(56, 189, 248, 0.28);
       color: #c5d3e8;
       padding: 11px 22px;
       transform: skewX(-14deg);
@@ -1059,13 +1061,14 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
     }
 
     .scifi-table-wrapper {
-      background: rgba(6, 11, 24, 0.96);
-      border: 1px solid rgba(0, 240, 255, 0.28);
+      background: rgba(10, 13, 38, 0.78);
+      backdrop-filter: blur(16px) saturate(150%);
+      border: 1px solid rgba(56, 189, 248, 0.28);
       clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
       padding: 16px 20px 20px;
       overflow-x: auto;
       position: relative;
-      box-shadow: 0 16px 45px rgba(0, 0, 0, 0.75);
+      box-shadow: 0 16px 45px rgba(4, 6, 22, 0.68);
     }
 
     .scifi-table-wrapper::before {
@@ -1288,8 +1291,9 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
     /* SCIFI FORMS & CARDS                                       */
     /* ========================================================= */
     .scifi-form-card {
-      background: rgba(7, 13, 28, 0.94);
-      border: 1px solid rgba(0, 240, 255, 0.28);
+      background: rgba(11, 14, 42, 0.78);
+      backdrop-filter: blur(16px) saturate(150%);
+      border: 1px solid rgba(56, 189, 248, 0.28);
       clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
       padding: 28px 30px;
       margin-bottom: 24px;
@@ -1407,11 +1411,12 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
     }
 
     .scifi-stat-card {
-      background: rgba(7, 13, 28, 0.94);
-      border: 1px solid rgba(0, 240, 255, 0.28);
+      background: rgba(11, 14, 42, 0.76);
+      backdrop-filter: blur(16px) saturate(150%);
+      border: 1px solid rgba(56, 189, 248, 0.28);
       clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
       padding: 24px;
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 14px 40px rgba(4, 6, 22, 0.65);
       transition: all 0.25s ease;
       position: relative;
     }
@@ -1810,12 +1815,13 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
     }
 
     .access-denied-box {
-      background: rgba(7, 13, 28, 0.94);
+      background: rgba(11, 14, 42, 0.78);
+      backdrop-filter: blur(16px) saturate(150%);
       border: 1px solid rgba(244, 63, 94, 0.4);
       clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
       padding: 60px 30px;
       text-align: center;
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 14px 40px rgba(4, 6, 22, 0.7);
     }
 
     .denied-icon {
