@@ -168,11 +168,11 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
                   </td>
                   <td>
                     <div class="action-btn-group">
-                      <button class="btn-action-edit font-scifi" (click)="openEditUser(u)" title="Sửa thông tin">
+                      <button class="btn-action-edit font-scifi" *ngIf="auth.isMasterAdmin() || u.role !== 'ROLE_ADMIN'" (click)="openEditUser(u)" title="Sửa thông tin">
                         <i class="fa-solid fa-pen-to-square"></i>
                         <span>SỬA</span>
                       </button>
-                      <button class="btn-action-del font-scifi" *ngIf="!u.isMasterAdmin" (click)="deleteUser(u)" title="Xóa người dùng">
+                      <button class="btn-action-del font-scifi" *ngIf="!u.isMasterAdmin && (auth.isMasterAdmin() || u.role !== 'ROLE_ADMIN')" (click)="deleteUser(u)" title="Xóa người dùng">
                         <i class="fa-solid fa-trash-can"></i>
                         <span>XÓA</span>
                       </button>
@@ -452,7 +452,7 @@ import { ExamService, Exam, Subject, DashboardStats } from '../../services/exam.
               <input type="text" [(ngModel)]="editUserForm.mssv" placeholder="VD: HE171199" class="scifi-input uppercase font-mono" />
             </div>
 
-            <div class="form-group">
+            <div class="form-group" *ngIf="auth.isMasterAdmin()">
               <label class="form-label font-scifi">VAI TRÒ (ROLE):</label>
               <select [(ngModel)]="editUserForm.role" class="scifi-input font-scifi">
                 <option value="ROLE_USER">ROLE_USER (Sinh viên)</option>
