@@ -22,7 +22,7 @@ import { AuthService } from '../../services/auth.service';
             <span class="seal-emoji">⬡</span>
             <div class="seal-glow"></div>
           </div>
-          <span class="portal-badge font-scifi">HOCDETHIFPT • SECURITY VAULT</span>
+          <span class="portal-badge font-scifi">HOCDETHIFPT • BẢO MẬT QUẢN TRỊ</span>
           <h1 class="portal-title font-scifi text-gradient-gold">CỔNG QUẢN TRỊ VIÊN</h1>
           <p class="portal-desc font-sub">
             Khu vực bảo mật cấp cao hệ thống <strong>HocDeThiFPT</strong>. Dành riêng cho Quản Trị Viên đăng nhập bằng tài khoản được cấp trong cơ sở dữ liệu.
@@ -161,20 +161,20 @@ import { AuthService } from '../../services/auth.service';
       filter: drop-shadow(0 0 8px #fbbf24);
     }
     .portal-badge {
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
       color: #fbbf24;
-      font-weight: 800;
+      font-weight: 700;
     }
     .portal-title {
       font-size: 1.7rem;
-      font-weight: 900;
+      font-weight: 700;
       margin: 8px 0 10px;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.03em;
     }
     .portal-desc {
-      font-size: 0.88rem;
-      color: #c5d3e8;
+      font-size: 0.92rem;
+      color: #cbd5e1;
       line-height: 1.6;
     }
     .portal-desc strong {
@@ -185,10 +185,10 @@ import { AuthService } from '../../services/auth.service';
     }
     .form-label {
       display: block;
-      font-size: 0.76rem;
-      font-weight: 800;
-      color: #c5d3e8;
-      letter-spacing: 0.06em;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #e2e8f0;
+      letter-spacing: 0.03em;
       margin-bottom: 8px;
     }
     .input-wrap {
@@ -250,9 +250,9 @@ import { AuthService } from '../../services/auth.service';
     .back-link {
       color: #00f0ff;
       text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
       display: inline-flex;
       align-items: center;
       gap: 6px;

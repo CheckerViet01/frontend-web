@@ -24,7 +24,7 @@ import { AuthService } from '../../services/auth.service';
             <span class="header-gem">⬡</span>
             <div class="orb-pulse-ring"></div>
           </div>
-          <span class="portal-badge font-scifi">HOCDETHIFPT • STUDENT VAULT</span>
+          <span class="portal-badge font-scifi">HOCDETHIFPT • ĐẠI HỌC FPT</span>
           <h2 class="modal-title font-scifi text-shimmer-cyan">CỔNG SINH VIÊN</h2>
           <p class="modal-desc font-sub">
             Đăng nhập để tra cứu toàn bộ đề thi, tải file Given Code (.ZIP) và trao đổi giải thuật.
@@ -290,21 +290,21 @@ import { AuthService } from '../../services/auth.service';
       animation: spinSlow 10s linear infinite;
     }
     .portal-badge {
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
       color: #00f0ff;
-      font-weight: 800;
+      font-weight: 700;
     }
     .modal-title {
-      font-size: 1.6rem;
-      font-weight: 900;
+      font-size: 1.65rem;
+      font-weight: 700;
       margin: 6px 0 8px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.03em;
     }
     .modal-desc {
-      font-size: 0.88rem;
-      color: #c5d3e8;
-      line-height: 1.5;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+      line-height: 1.55;
       margin-bottom: 18px;
     }
 
@@ -321,10 +321,10 @@ import { AuthService } from '../../services/auth.service';
       padding: 10px 16px;
       background: transparent;
       border: none;
-      color: #788a9e;
-      font-size: 0.82rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      color: #94a3b8;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
       cursor: pointer;
       transition: all 0.2s;
       display: flex;
@@ -352,14 +352,14 @@ import { AuthService } from '../../services/auth.service';
     .form-group {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 6px;
       text-align: left;
     }
     .input-label {
-      font-size: 0.76rem;
-      font-weight: 800;
-      color: #c5d3e8;
-      letter-spacing: 0.06em;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #e2e8f0;
+      letter-spacing: 0.03em;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -400,19 +400,20 @@ import { AuthService } from '../../services/auth.service';
     .input-badge {
       position: absolute;
       right: 12px;
-      font-size: 0.72rem;
-      font-weight: 900;
+      font-size: 0.74rem;
+      font-weight: 700;
       color: #00f0ff;
       background: rgba(0, 240, 255, 0.15);
       border: 1px solid rgba(0, 240, 255, 0.4);
       padding: 2px 7px;
       border-radius: 4px;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.04em;
     }
     .field-hint {
-      font-size: 0.72rem;
-      color: #788a9e;
+      font-size: 0.78rem;
+      color: #9fb2c9;
       margin-top: 2px;
+      line-height: 1.4;
     }
     .error-msg {
       padding: 10px 14px;
@@ -433,18 +434,18 @@ import { AuthService } from '../../services/auth.service';
       align-items: center;
       justify-content: center;
       gap: 8px;
-      font-size: 0.82rem;
-      color: #788a9e;
+      font-size: 0.86rem;
+      color: #9fb2c9;
       margin-top: 6px;
     }
     .switch-link {
       color: #00f0ff;
-      font-weight: 800;
+      font-weight: 700;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.02em;
     }
     .switch-link:hover {
       text-decoration: underline;

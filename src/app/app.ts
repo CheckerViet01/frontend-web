@@ -33,10 +33,10 @@ import { AuthService } from './services/auth.service';
       <div class="footer-container">
         <div class="footer-brand font-scifi">
           <span class="footer-gem">⬡</span>
-          <span class="brand-name font-scifi">HOCDETHIFPT</span>
-          <span class="version-tag font-mono">SYSTEM VAULT 2026</span>
+          <span class="brand-name font-scifi">HocDeThiFPT</span>
+          <span class="version-tag font-mono">FPT UNIVERSITY 2026</span>
         </div>
-        <div class="copyright font-mono">
+        <div class="copyright font-sub">
           © 2026 HocDeThiFPT. Hệ thống chia sẻ đề thi Đại học FPT. All rights reserved.
         </div>
       </div>
@@ -148,25 +148,25 @@ import { AuthService } from './services/auth.service';
       filter: drop-shadow(0 0 8px #00f0ff);
     }
     .brand-name {
-      font-size: 1.15rem;
-      font-weight: 900;
-      letter-spacing: 0.16em;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
       color: #ffffff;
       text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
     }
     .version-tag {
-      font-size: 0.68rem;
+      font-size: 0.72rem;
       background: rgba(0, 240, 255, 0.12);
       border: 1px solid rgba(0, 240, 255, 0.35);
       color: #00f0ff;
-      padding: 2px 8px;
+      padding: 3px 10px;
       border-radius: 4px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      font-weight: 700;
+      letter-spacing: 0.05em;
     }
     .copyright {
-      font-size: 0.78rem;
-      color: #788a9e;
+      font-size: 0.86rem;
+      color: #94a3b8;
       font-weight: 500;
     }
 

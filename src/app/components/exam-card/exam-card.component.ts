@@ -22,7 +22,7 @@ import { Exam } from '../../services/exam.service';
       <div class="card-header">
         <div class="subject-tag">
           <span class="subject-code font-scifi">{{ exam.subjectCode }}</span>
-          <span class="semester-text font-scifi">{{ exam.semester }}</span>
+          <span class="semester-text font-sub">{{ exam.semester }}</span>
         </div>
 
         <!-- Exam Type Pill -->
@@ -39,15 +39,15 @@ import { Exam } from '../../services/exam.service';
 
       <!-- Capability Badges: Đếm số ảnh, file zip given, đáp án -->
       <div class="media-badges-row">
-        <span class="media-pill img-pill font-mono" *ngIf="hasImages()">
+        <span class="media-pill img-pill font-sub" *ngIf="hasImages()">
           <i class="fa-solid fa-images"></i>
           <span>{{ getImageCount() }} Ảnh Đề</span>
         </span>
-        <span class="media-pill zip-pill font-mono" *ngIf="hasZips()">
+        <span class="media-pill zip-pill font-sub" *ngIf="hasZips()">
           <i class="fa-solid fa-file-zipper"></i>
           <span>{{ getZipCount() }} Given .ZIP</span>
         </span>
-        <span class="media-pill solution-pill font-mono" *ngIf="exam.solution">
+        <span class="media-pill solution-pill font-sub" *ngIf="exam.solution">
           <i class="fa-solid fa-check-double"></i>
           <span>Có Lời Giải</span>
         </span>
@@ -203,41 +203,41 @@ import { Exam } from '../../services/exam.service';
       gap: 8px;
     }
     .subject-code {
-      font-size: 0.82rem;
-      font-weight: 800;
+      font-size: 0.85rem;
+      font-weight: 700;
       color: #00f0ff;
       background: rgba(0, 240, 255, 0.12);
       padding: 3px 10px;
       clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
       border: 1px solid rgba(0, 240, 255, 0.4);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.04em;
     }
     .semester-text {
-      font-size: 0.72rem;
-      color: #7b8f9e;
+      font-size: 0.82rem;
+      color: #9fb2c9;
       font-weight: 600;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.01em;
     }
 
     /* Mã Đề Thi */
     .exam-code-title {
-      font-size: 1.15rem;
-      font-weight: 800;
+      font-size: 1.25rem;
+      font-weight: 700;
       color: #ffffff;
-      line-height: 1.45;
+      line-height: 1.4;
       margin: 4px 0 14px;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      min-height: 2.9em;
-      letter-spacing: 0.04em;
+      min-height: 2.8em;
+      letter-spacing: 0.02em;
       transition: color 0.2s ease, text-shadow 0.2s ease;
     }
     .bracket-prefix, .bracket-suffix {
       color: #00f0ff;
       margin: 0 2px;
-      font-weight: 900;
+      font-weight: 700;
     }
     .scifi-exam-card:hover .exam-code-title {
       color: #00f0ff;
@@ -252,9 +252,9 @@ import { Exam } from '../../services/exam.service';
       margin-bottom: 16px;
     }
     .media-pill {
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 3px 9px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 10px;
       clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
       display: inline-flex;
       align-items: center;
@@ -305,21 +305,21 @@ import { Exam } from '../../services/exam.service';
       object-fit: cover;
     }
     .author-name {
-      font-size: 0.8rem;
-      color: #c5d3e8;
+      font-size: 0.84rem;
+      color: #cbd5e1;
       font-weight: 600;
-      max-width: 110px;
+      max-width: 120px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.01em;
     }
     .stats-counters {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 0.74rem;
-      color: #7b8f9e;
+      font-size: 0.78rem;
+      color: #94a3b8;
     }
     .stats-counters span {
       display: inline-flex;
@@ -344,14 +344,14 @@ import { Exam } from '../../services/exam.service';
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 9px 14px;
+      padding: 10px 14px;
       clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
       background: rgba(0, 240, 255, 0.08);
       border: 1.5px solid rgba(0, 240, 255, 0.38);
       color: #00f0ff;
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .action-btn-chamfer i {
